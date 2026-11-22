@@ -33,17 +33,17 @@ public class AddNewsStep {
     @Step("Заполнить время публикации {'time'}")
     public void selectPublicationTime(Calendar time) {addNewsPage.selectPublicationTime(time);}
 
-    @Step("Переключение свитчера в статус новости 'Активна'")
+    @Step("Установка статуса новости 'Активна'")
     public void getSwitcherOn() {
-        addNewsPage.clickSwitcher();
+        addNewsPage.setSwitcherState(true);
         addNewsPage.checkSwitcherOn();
     }
-    @Step("Переключение свитчера в статус новости 'Не активна'")
+    @Step("Установка статуса новости 'Не активна'")
     public void getSwitcherOff() {
-        addNewsPage.clickSwitcher();
+        addNewsPage.setSwitcherState(false);
         addNewsPage.checkSwitcherOff();
     }
-    @Step("Наэать кнопку 'Сохранить'")
+    @Step("Нажать кнопку 'Сохранить'")
     public void clickSaveButton() {addNewsPage.clickSaveButton();}
 
     @Step("Нажать кнопку 'Отмена'")
@@ -55,7 +55,7 @@ public class AddNewsStep {
     @Step("Ошибка заполнения строки 'Заголовок'")
     public void checkErrorItemLine() {addNewsPage.checkErrorItemIcon();}
 
-    @Step("Oшибка заполнения ячейки 'Дата публикации'")
+    @Step("Ошибка заполнения ячейки 'Дата публикации'")
     public void checkErrorPublicationDate() {addNewsPage.checkErrorDateIcon();}
 
     @Step("Ошибка заполнения ячейки 'Время'")
@@ -66,13 +66,16 @@ public class AddNewsStep {
 
     @Step("Неверный формат времени")
     public void checkTimeErrorMessage() {addNewsPage.checkErrorMessage();}
+
+    @Step("Проверка введённого времени {'value'}")
+    public void checkTimeFieldValue(String value) {addNewsPage.checkTimeFieldValue(value);}
     @Step("Поле даты пустое")
     public void checkPublicationDateIsEmpty() {addNewsPage.checkPublicationDateIsEmpty();}
 
     @Step("Поле времени пустое")
     public void checkPublicationTimeIsEmpty() {addNewsPage.checkPublicationTimeIsEmpty();}
 
-    @Step("Предупреждение, что данные не будут сохранены при отмене добавления нововсти")
+    @Step("Предупреждение, что данные не будут сохранены при отмене добавления новости")
     public void checkCancelMessage() {addNewsPage.checkCancelMessage();}
 
     @Step("Подтвердить отмену добавления новости")

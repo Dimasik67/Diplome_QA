@@ -2,7 +2,7 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.closeSoftKeyboardIfVisible;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -21,7 +21,7 @@ import androidx.test.espresso.ViewInteraction;
 
 import java.util.Calendar;
 
-import ru.edu.qamid.fmhandroid.R;
+import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.data.DateTimePicker;
 import ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher;
 
@@ -62,38 +62,38 @@ public class ChangeNewsPage {
                 withId(R.id.custom_app_bar_title_text_view),
                 withText(TITLE)
         ));
-        category = onView(withId(R.id.news_item_category_text_input_layout));
+        category = onView(withId(R.id.news_category_text_input_layout));
         selectCategoryButton = onView(allOf(
-                childAtPosition(withId(R.id.news_item_category_text_input_layout), 2),
+                childAtPosition(withId(R.id.news_category_text_input_layout), 2),
                 withContentDescription(CATEGORY_BUTTON)
         ));
-        autoComplete = onView(withId(R.id.news_item_category_text_auto_complete_text_view));
-        categoryList = onView(CustomViewMatcher.recyclerVievSizeMatcher(8));
-        itemNews = onView(withId(R.id.news_item_title_text_input_edit_text));
-        publicationDate = onView(withId(R.id.news_item_publish_date_text_input_edit_text));
-        publicationTime = onView(withId(R.id.news_item_publish_time_text_input_edit_text));
-        descriptionNews = onView(withId(R.id.news_item_description_text_input_edit_text));
-        switcher = onView(withId(R.id.switcher));
-        switcherOn = onView(allOf(withId(R.id.switcher), withText(SWITCHER_ON)));
-        switcherOff = onView(allOf(withId(R.id.switcher), withText(SWITCHER_OFF)));
+        autoComplete = onView(withId(R.id.news_category_auto_complete));
+        categoryList = onView(CustomViewMatcher.recyclerViewSizeMatcher(8));
+        itemNews = onView(withId(R.id.news_title_edit_text));
+        publicationDate = onView(withId(R.id.news_publish_date_edit_text));
+        publicationTime = onView(withId(R.id.news_publish_time_edit_text));
+        descriptionNews = onView(withId(R.id.news_description_edit_text));
+        switcher = onView(withId(R.id.news_active_switch));
+        switcherOn = onView(allOf(withId(R.id.news_active_switch), withText(SWITCHER_ON)));
+        switcherOff = onView(allOf(withId(R.id.news_active_switch), withText(SWITCHER_OFF)));
         saveButton = onView(allOf(
-                withId(R.id.save_button),
+                withId(R.id.news_save_button),
                 withContentDescription(SAVE_BUTTON)
         ));
         cancelButton = onView(allOf(
-                withId(R.id.cancel_button),
+                withId(R.id.news_cancel_button),
                 withContentDescription(CANCEL_BUTTON)
         ));
-        cancelMessage = onView(isRoot()).check(matches(withTextOnScreen(CANCEL_MESSAGE)));
-        timeErrorMessage = onView(isRoot()).check(matches(withText(ERROR_MESSAGE)));
-        okButton = onView(isRoot()).check(matches(withButtonText(OK_BUTTON)));
-        cancelButton = onView(isRoot()).check(matches(withButtonText(CANCEL_BUTTON2)));
+        cancelMessage = onView(isRoot());
+        timeErrorMessage = onView(withText(ERROR_MESSAGE));
+        okButton = onView(withButtonText(OK_BUTTON));
+        cancelButton2 = onView(withButtonText(CANCEL_BUTTON2));
 
     }
     public void openChangePage() {changeTitle.check(matches(isDisplayed()));}
 
     private void closeSoftKeyboardIfNeeded() {
-        closeSoftKeyboard();
+        closeSoftKeyboardIfVisible();
     }
     public void clickSelectionButton() {selectCategoryButton.perform(click());}
     public void getCategoryList() {categoryList.check(matches(isDisplayed()));}
@@ -120,7 +120,7 @@ public class ChangeNewsPage {
     public void clickSaveButton() {saveButton.perform(click()); }
 
     public void clickCancelButton() {cancelButton.perform(click()); }
-    public void getCancelMessage() {cancelMessage.check(matches(isDisplayed()));}
+    public void getCancelMessage() {cancelMessage.check(matches(withTextOnScreen(CANCEL_MESSAGE)));}
     public void getErrorMessage() {timeErrorMessage.check(matches(isDisplayed()));}
 
     public void clickOkButton() {okButton.perform(click());}

@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.fmhandroid.ui.AppActivity;
+import ru.edu.qamid.ui.AppActivity;
 import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 
@@ -53,7 +53,7 @@ public class AuthorizationTest {
 
     @Test
     @DisplayName("ТС-001. Ввод валидных логина и пароля")
-    public void usedValidLogAndPasTest() {
+    public void usedValidLogAndPassTest() {
 
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
@@ -68,7 +68,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage1();
+        authorizationStep.checkErrorMessage1(decorView);
     }
 
     @Test
@@ -77,16 +77,16 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("q");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
     @DisplayName("ТС-004. Ввод валидного логина заглавными и строчными буквами, ввод валидного пароля")
-    public void bigAdnSmallLettersTest() {
+    public void bigAndSmallLettersTest() {
         authorizationStep.inputLogin("LoGiN2");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("@#$%**^");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
@@ -104,7 +104,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("54535");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
@@ -113,7 +113,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage1();
+        authorizationStep.checkErrorMessage1(decorView);
     }
 
     @Test
@@ -122,16 +122,16 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("j");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
-    @DisplayName("ТС-009. Ввод валидного логина, ввод поле 'Пароль' спец.символов")
+    @DisplayName("ТС-009. Ввод валидного логина, ввод в поле 'Пароль' спецсимволов")
     public void specialSymbolPassTest() {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("&*^%#");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("56512");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
@@ -149,7 +149,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("log");
         authorizationStep.inputPassword("pass");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2();
+        authorizationStep.checkErrorMessage2(decorView);
     }
 
     @Test
@@ -158,7 +158,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("");
         authorizationStep.inputPassword("");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage1();
+        authorizationStep.checkErrorMessage1(decorView);
     }
 
     @Test
@@ -176,11 +176,7 @@ public class AuthorizationTest {
 
     @After
     public void tearDown() {
-        logoutIfLoggedIn();
+        appHomepageStep.logoutIfLoggedIn();
     }
 
-    private void logoutIfLoggedIn() {
-        appHomepageStep.clickUserAccount();
-        appHomepageStep.clickLogoutButton();
-    }
 }

@@ -14,7 +14,7 @@ public class QuotespageStep {
     public void getListOfQuotes() { quotespagePage.getListOfQuotes(); }
 
     @Step("Переход к цитате №8")
-    public void getQuoters8Card() { quotespagePage.getQuotes8Card();}
+    public void getQuote8Card() { quotespagePage.getQuote8Card();}
 
     @Step("Развернуть карточку с цитатой")
     public void clickExpandQuote8Button() { quotespagePage.clickExpandQuote8Button(); }

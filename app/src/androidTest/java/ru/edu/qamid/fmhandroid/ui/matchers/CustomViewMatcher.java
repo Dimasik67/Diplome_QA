@@ -110,7 +110,7 @@ public class CustomViewMatcher {
         };
     }
 
-    public static BoundedMatcher<View, RecyclerView> recyclerVievSizeMatcher(final int matcherSize) {
+    public static BoundedMatcher<View, RecyclerView> recyclerViewSizeMatcher(final int matcherSize) {
         return new BoundedMatcher<View, RecyclerView>(RecyclerView.class) {
 
             @Override

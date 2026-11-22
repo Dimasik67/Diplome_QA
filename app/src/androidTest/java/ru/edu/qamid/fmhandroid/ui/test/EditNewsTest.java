@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.fmhandroid.ui.AppActivity;
+import ru.edu.qamid.ui.AppActivity;
 import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 import ru.edu.qamid.fmhandroid.ui.steps.ChangeNewsStep;
@@ -27,7 +27,7 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
 //@RunWith(AndroidJUnit4.class)
 @RunWith(AllureAndroidJUnit4.class)
 
-@Epic("Блок 7. Страница 'Панель управления'. Подпункт 7.2. Просмотр, сортировка, редактирование, удаление нововстей. Тестовые сценарии ТС-049 - ТС-051")
+@Epic("Блок 7. Страница 'Панель управления'. Подпункт 7.2. Просмотр, сортировка, редактирование, удаление новостей. Тестовые сценарии ТС-049 - ТС-051")
 
 public class EditNewsTest {
     AppHomepageStep appHomepageStep = new AppHomepageStep();
@@ -64,13 +64,9 @@ public class EditNewsTest {
 
     @After
     public void tearDown() {
-        logoutIfLoggedIn();
+        appHomepageStep.logoutIfLoggedIn();
     }
 
-    private void logoutIfLoggedIn() {
-        appHomepageStep.clickUserAccount();
-        appHomepageStep.clickLogoutButton();
-    }
 
     @Test
     @DisplayName("ТС-049. Просмотр текста новости")

@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.fmhandroid.ui.AppActivity;
+import ru.edu.qamid.ui.AppActivity;
 import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 import ru.edu.qamid.fmhandroid.ui.steps.EditNewsStep;
@@ -34,7 +34,6 @@ public class NewspageTest {
     AppHomepageStep appHomepageStep = new AppHomepageStep();
     AuthorizationStep authorizationStep = new AuthorizationStep();
     NewspageStep newspageStep = new NewspageStep();
-    AboutAppStep aboutAppStep = new AboutAppStep();
     QuotespageStep quotespageStep = new QuotespageStep();
     FilterNewsStep filterNewsStep = new FilterNewsStep();
     EditNewsStep editNewsStep = new EditNewsStep();
@@ -65,13 +64,9 @@ public class NewspageTest {
 
     @After
     public void tearDown() {
-        logoutIfLoggedIn();
+        appHomepageStep.logoutIfLoggedIn();
     }
 
-    private void logoutIfLoggedIn() {
-        appHomepageStep.clickUserAccount();
-        appHomepageStep.clickLogoutButton();
-    }
 
     @Test
     @DisplayName("ТС-021. Переход на главную страницу приложения через главное меню")

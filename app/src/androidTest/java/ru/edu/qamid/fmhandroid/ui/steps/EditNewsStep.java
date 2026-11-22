@@ -15,7 +15,7 @@ public class EditNewsStep {
     public void addNews() {editNewsPage.clickAddNewsButton();}
 
     @Step("Проверка кнопки фильтрации новостей")
-    public void filtredNews() {editNewsPage.clickFilterNewsButton();}
+    public void filteredNews() {editNewsPage.clickFilterNewsButton();}
 
     @Step("Сортировка новостей")
     public void sortedNews() {editNewsPage.clickSortNewsButton();}
@@ -27,7 +27,7 @@ public class EditNewsStep {
     public void checkNewsItem(String value) { editNewsPage.getNewsItem(value);}
 
     @Step("Проверка даты создания новости {'value'}")
-    public void checkNewsCreationData(String value) {editNewsPage.getNewsCreationDate(value);}
+    public void checkNewsCreationDate(String value) {editNewsPage.getNewsCreationDate(value);}
 
     @Step("Проверка даты публикации {'value'}")
     public void checkNewsPublicationDate(String value) {editNewsPage.getNewsPublicationDate(value);}

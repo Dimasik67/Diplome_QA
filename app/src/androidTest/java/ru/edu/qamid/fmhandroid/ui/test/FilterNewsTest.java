@@ -18,7 +18,7 @@ import java.util.Calendar;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.fmhandroid.ui.AppActivity;
+import ru.edu.qamid.ui.AppActivity;
 import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 import ru.edu.qamid.fmhandroid.ui.steps.FilterNewsStep;
@@ -63,13 +63,9 @@ public class FilterNewsTest {
     }
     @After
     public void tearDown() {
-        logoutIfLoggedIn();
+        appHomepageStep.logoutIfLoggedIn();
     }
 
-    private void logoutIfLoggedIn() {
-        appHomepageStep.clickUserAccount();
-        appHomepageStep.clickLogoutButton();
-    }
 
     @Test
     @DisplayName("ТС-026. Все поля на странице 'Фильтрация новостей' пустые")
@@ -103,7 +99,7 @@ public class FilterNewsTest {
     public void enteringCategoryNameInNumbersTest() {
         filterNewsStep.categoryInput("76546");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMassage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test
@@ -111,7 +107,7 @@ public class FilterNewsTest {
     public void specialSymbolCategoryNameTest() {
         filterNewsStep.categoryInput("#@^&%$");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMassage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test
@@ -119,7 +115,7 @@ public class FilterNewsTest {
     public void enteringCategoryNameInLatinTest() {
         filterNewsStep.categoryInput("BirthDay");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMassage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test
@@ -127,7 +123,7 @@ public class FilterNewsTest {
     public void categoryNameIsNotExistTest() {
         filterNewsStep.categoryInput("Персонал");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMassage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test
@@ -137,7 +133,7 @@ public class FilterNewsTest {
         filterNewsStep.getAutoComplete();
         Calendar startDate = Calendar.getInstance();
         startDate.set(2026, Calendar.FEBRUARY, 9);
-        filterNewsStep.inputStartData(startDate);
+        filterNewsStep.inputStartDate(startDate);
         filterNewsStep.checkEndDateIsEmpty();
         filterNewsStep.clickFilterButton();
         newspageStep.openNewspage();
@@ -151,13 +147,13 @@ public class FilterNewsTest {
         filterNewsStep.checkStartDateIsEmpty();
         Calendar endDate = Calendar.getInstance();
         endDate.set(2026, Calendar.FEBRUARY, 12);
-        filterNewsStep.inputEndData(endDate);
+        filterNewsStep.inputEndDate(endDate);
         filterNewsStep.clickFilterButton();
         newspageStep.openNewspage();
     }
 
     @Test
-    @DisplayName("ТС-035. При заполнении указать конечную дату на несколько лет вперед, начальная дата - текущая")
+    @DisplayName("ТС-035. При заполнении указать конечную дату на несколько лет вперёд, начальная дата - текущая")
     public void selectEndDateSeveralYearsForwardFromCurrentDateTest() {
        filterNewsStep.clickCategorySelectButton();
        filterNewsStep.getAutoComplete();
@@ -168,14 +164,14 @@ public class FilterNewsTest {
        startDate.set(Calendar.MILLISECOND, 0);
        Calendar endDate = Calendar.getInstance();
        endDate.set(2030, Calendar.MAY, 1);
-       filterNewsStep.inputStartData(startDate);
-       filterNewsStep.inputEndData(endDate);
+       filterNewsStep.inputStartDate(startDate);
+       filterNewsStep.inputEndDate(endDate);
        filterNewsStep.clickFilterButton();
-       filterNewsStep.checkErrorMassage();
+       filterNewsStep.checkErrorMessage();
     }
 
     @Test
-    @DisplayName("ТС-036. При заполнении указать начальную дату на несколько лет вперед, конечная дата - текущая")
+    @DisplayName("ТС-036. При заполнении указать начальную дату на несколько лет вперёд, конечная дата - текущая")
     public void SelectStartDateSeveralYearsForwardFromCurrentDateTest() {
         filterNewsStep.clickCategorySelectButton();
         filterNewsStep.getAutoComplete();
@@ -186,10 +182,10 @@ public class FilterNewsTest {
         endDate.set(Calendar.MINUTE, 0);
         endDate.set(Calendar.SECOND, 0);
         endDate.set(Calendar.MILLISECOND, 0);
-        filterNewsStep.inputStartData(startDate);
-        filterNewsStep.inputEndData(endDate);
+        filterNewsStep.inputStartDate(startDate);
+        filterNewsStep.inputEndDate(endDate);
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMassage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test

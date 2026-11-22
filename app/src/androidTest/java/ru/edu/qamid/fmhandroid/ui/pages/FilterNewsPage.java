@@ -2,7 +2,7 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.closeSoftKeyboardIfVisible;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -18,7 +18,7 @@ import androidx.test.espresso.ViewInteraction;
 
 import java.util.Calendar;
 
-import ru.edu.qamid.fmhandroid.R;
+import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.data.DateTimePicker;
 import ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher;
 
@@ -30,7 +30,7 @@ public class FilterNewsPage {
     public ViewInteraction filterButton;
     public ViewInteraction cancelButton;
     public ViewInteraction categorySelectionButton;
-    public ViewInteraction errorMassage;
+    public ViewInteraction errorMessage;
     public ViewInteraction categoryList;
     public ViewInteraction autoComplete;
 
@@ -40,7 +40,7 @@ public class FilterNewsPage {
     private static final String CATEGORY_NAME = "Объявление";
     private static final String FILTER_BUTTON_TEXT = "Фильтровать";
     private static final String CANCEL_BUTTON_TEXT = "Отмена";
-    private static final String ERROR_MASSAGE = "Некорректный ввод";
+    private static final String ERROR_MESSAGE = "Некорректный ввод";
 
     public FilterNewsPage() {
         filterNewsTitle = onView(allOf(
@@ -48,24 +48,24 @@ public class FilterNewsPage {
                 CustomViewMatcher.withContentDescription(TITLE_TEXT)
         ));
 
-        inputNewsCategory = onView(withId(R.id.news_item_category_text_input_layout));
+        inputNewsCategory = onView(withId(R.id.news_category_text_input_layout));
         categorySelectionButton = onView(allOf(
-                childAtPosition(withId(R.id.news_item_category_text_input_layout), 2),
+                childAtPosition(withId(R.id.news_category_text_input_layout), 2),
                 withContentDescription("Показать раскрывающееся меню")
         ));
-        startDateFilter = onView(withId(R.id.news_item_publish_date_start_text_input_edit_text));
-        endDateFilter = onView(withId(R.id.news_item_publish_date_end_text_input_edit_text));
+        startDateFilter = onView(withId(R.id.filter_news_date_start_edit_text));
+        endDateFilter = onView(withId(R.id.filter_news_date_end_edit_text));
         filterButton = onView(allOf(
-                withButtonId(R.id.filter_button),
+                withButtonId(R.id.filter_news_apply_button),
                 withButtonText(FILTER_BUTTON_TEXT)
         ));
         cancelButton = onView(allOf(
-                withButtonId(R.id.cancel_button),
+                withButtonId(R.id.filter_news_cancel_button),
                 withButtonText(CANCEL_BUTTON_TEXT)
         ));
-        errorMassage = onView(withText(ERROR_MASSAGE));
-        categoryList = onView(CustomViewMatcher.recyclerVievSizeMatcher(8));
-        autoComplete = onView(withId(R.id.news_item_category_text_auto_complete_text_view));
+        errorMessage = onView(withText(ERROR_MESSAGE));
+        categoryList = onView(CustomViewMatcher.recyclerViewSizeMatcher(8));
+        autoComplete = onView(withId(R.id.news_category_auto_complete));
 
     }
 
@@ -75,11 +75,11 @@ public class FilterNewsPage {
         closeSoftKeyboardIfNeeded();
     }
     public void getAutoComplete() {autoComplete.perform(typeText(CATEGORY_NAME));}
-    public void inputStartData(Calendar date) {
+    public void inputStartDate(Calendar date) {
         startDateFilter.perform(click());
         DateTimePicker.selectDate(date);
     }
-    public void inputEndData(Calendar date) {
+    public void inputEndDate(Calendar date) {
         endDateFilter.perform(click());
         DateTimePicker.selectDate(date);
     }
@@ -93,8 +93,8 @@ public class FilterNewsPage {
     public void clickFilterButton() { filterButton.perform(click()); }
     public void clickCancelButton() { cancelButton.perform(click()); }
     private void closeSoftKeyboardIfNeeded() {
-        closeSoftKeyboard();
+        closeSoftKeyboardIfVisible();
     }
     public void getCategoryList() {categoryList.check(matches(isDisplayed()));}
-    public void checkErrorMassage() { errorMassage.check(matches(isDisplayed())); }
+    public void checkErrorMessage() { errorMessage.check(matches(isDisplayed())); }
 }

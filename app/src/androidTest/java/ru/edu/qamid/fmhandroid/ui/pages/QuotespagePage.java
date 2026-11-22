@@ -8,14 +8,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.childAtPosition;
-import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withButtonId;
-import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withButtonText;
 
 import androidx.test.espresso.ViewInteraction;
 
 import org.hamcrest.core.AllOf;
 
-import ru.edu.qamid.fmhandroid.R;
+import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher;
 
 public class QuotespagePage {
@@ -24,14 +22,14 @@ public class QuotespagePage {
     public ViewInteraction mainMenuElementNews;
     public ViewInteraction mainMenuElementMainPage;
     public ViewInteraction expandQuote8Button;
-    public ViewInteraction qoute8Card;
+    public ViewInteraction quote8Card;
     public ViewInteraction quote8Text;
     public ViewInteraction listOfQuotes;
     private static final String MENU_ITEM_NEWS = "Новости";
-    private static final String MENU_ITEM_MAINPAGE = "Главная";
+    private static final String MENU_ITEM_MAIN_PAGE = "Главная";
     private static final String MISSION_TEXT = "Главное - жить любя";
     public static final String QUOTE8_TEXT = "Важен каждый!";
-    public static final String All_QUOTE_TEXT = "Каждый, кто оказывается в стенах хосписа, имеет огромное значение в жизни хосписа и его подопечных";
+    public static final String ALL_QUOTE_TEXT = "Каждый, кто оказывается в стенах хосписа, имеет огромное значение в жизни хосписа и его подопечных";
 
 
     public QuotespagePage() {
@@ -41,13 +39,13 @@ public class QuotespagePage {
         ));
         mainMenuButton = onView(withId(R.id.main_menu_image_button));
         mainMenuElementNews = onView(AllOf.allOf(
-                withButtonId(R.id.main_menu_image_button),
-                withButtonText(MENU_ITEM_NEWS)));
-                withButtonText(MENU_ITEM_ABOUTAPP)));
+                withId(R.id.menu_item_news),
+                withText(MENU_ITEM_NEWS)));
+
         mainMenuElementMainPage = onView(AllOf.allOf(
-                withButtonId(R.id.main_menu_image_button),
-                withButtonText(MENU_ITEM_MAINPAGE)));
-        qoute8Card = onView(allOf(
+                withId(R.id.menu_item_main),
+                withText(MENU_ITEM_MAIN_PAGE)));
+        quote8Card = onView(allOf(
                 childAtPosition(withId(R.id.our_mission_item_list_recycler_view), 7),
                 withId(R.id.our_mission_item_material_card_view),
                 withText(QUOTE8_TEXT)
@@ -59,14 +57,14 @@ public class QuotespagePage {
         quote8Text = onView(allOf(
                 childAtPosition(withId(R.id.our_mission_item_list_recycler_view), 7),
                 withId(R.id.our_mission_item_description_text_view),
-                withText(All_QUOTE_TEXT)
+                withText(ALL_QUOTE_TEXT)
         ));
-        listOfQuotes = onView(CustomViewMatcher.recyclerVievSizeMatcher(8));
+        listOfQuotes = onView(CustomViewMatcher.recyclerViewSizeMatcher(8));
 
     }
 
     public void getQuotespage() { openQuotespage.check(matches(isDisplayed())); }
-    public void getQuotes8Card() { qoute8Card.check(matches(isDisplayed())); }
+    public void getQuote8Card() { quote8Card.check(matches(isDisplayed())); }
     public void clickExpandQuote8Button() { expandQuote8Button.perform(click()); }
     public void getQuote8Text() { quote8Text.check(matches(isDisplayed())); }
     public void clickMainMenuButton() {mainMenuButton.perform(click()); }

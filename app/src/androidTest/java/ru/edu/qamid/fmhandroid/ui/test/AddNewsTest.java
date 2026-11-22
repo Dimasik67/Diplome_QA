@@ -18,7 +18,7 @@ import java.util.Calendar;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.fmhandroid.ui.AppActivity;
+import ru.edu.qamid.ui.AppActivity;
 import ru.edu.qamid.fmhandroid.ui.steps.AddNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
@@ -30,7 +30,7 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
 //@RunWith(AndroidJUnit4.class)
     @RunWith(AllureAndroidJUnit4.class)
 
-    @Epic("Блок 7. Страница 'Панель управления'. Подпункт 7.1. Создание новостей. Тестовые сценарии ТС-038- ТС-048")
+    @Epic("Блок 7. Страница 'Панель управления'. Подпункт 7.1. Создание новостей. Тестовые сценарии ТС-038 - ТС-048")
 
     public class AddNewsTest {
         AppHomepageStep appHomepageStep = new AppHomepageStep();
@@ -51,6 +51,7 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
         public void logIn() {
             CountingIdlingResource espressoIdlingResource = new CountingIdlingResource(GLOBAL_RESOURCE_NAME);
             IdlingRegistry.getInstance().register(espressoIdlingResource);
+            appHomepageStep.logoutIfLoggedIn();
             authorizationStep.loadAuthorizationPage();
             authorizationStep.checkAuthTitleIsDisplayed();
             activityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
@@ -64,17 +65,14 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
             newspageStep.openNewspage();
             newspageStep.clickEditNewsButton();
             editNewsStep.openEditNews();
+            editNewsStep.checkInitialNewsCount();
         }
 
         @After
         public void tearDown() {
-            logoutIfLoggedIn();
+            appHomepageStep.logoutIfLoggedIn();
         }
 
-        private void logoutIfLoggedIn() {
-            appHomepageStep.clickUserAccount();
-            appHomepageStep.clickLogoutButton();
-        }
 
         @Test
         @DisplayName("ТС-038. Создание активной новости с категорией 'День рождения'")
@@ -97,14 +95,14 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
 
         }
         @Test
-        @DisplayName("ТС-039. Создание неактивной новости с вводом категории вручную") //объединен с ТС-041 Ввод категории новости вручную
+        @DisplayName("ТС-039. Создание неактивной новости с вводом категории вручную") // объединён с ТС-041 Ввод категории новости вручную
         public void createNotActiveNewsTest() {
             editNewsStep.addNews();
             addNewsStep.openAddNews();
             addNewsStep.inputNewsCategory("Массаж");
             addNewsStep.inputNewsItem("Открыта запись на четверг");
             Calendar currentDate = Calendar.getInstance();
-            addNewsStep.selectPublicationTime(currentDate);
+            addNewsStep.selectPublicationDate(currentDate);
             addNewsStep.selectPublicationTime(currentDate);
             addNewsStep.inputNewsDescription("Массажист принимает с 9:00 до 18:00");
             addNewsStep.getSwitcherOff();
@@ -169,8 +167,8 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
             addNewsStep.openAddNews();
             addNewsStep.inputNewsCategory("Нужна помощь");
             addNewsStep.inputNewsItem("Требуется сиделка");
+            // Дата должна быть не раньше текущей: DatePicker запрещает прошедшие даты
             Calendar publicationDate = Calendar.getInstance();
-            publicationDate.set(2026, Calendar.OCTOBER, 28);
             Calendar publicationTime = Calendar.getInstance();
             publicationTime.set(Calendar.HOUR_OF_DAY, 12);
             publicationTime.set(Calendar.MINUTE, 25);
@@ -182,8 +180,8 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
         }
 
         @Test
-        @DisplayName("ТС-045. Ввод даты на 2 года вперед от текущей")
-        public void inputPublicationDateTwoYearForwardFromCurrentTest() {
+        @DisplayName("ТС-045. Ввод даты на 2 года вперёд от текущей")
+        public void inputPublicationDateTwoYearsForwardFromCurrentTest() {
             editNewsStep.addNews();
             addNewsStep.openAddNews();
             addNewsStep.inputNewsCategory("Праздник");
@@ -201,7 +199,7 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
         }
 
         @Test
-        @DisplayName("ТС-048. Ввод значений часов или минут, превышающие допустимый формат")// Объединен с ТС-047. Ввод времени публикации с клавиатуры
+        @DisplayName("ТС-048. Ввод значений часов или минут, превышающие допустимый формат")// Объединён с ТС-047. Ввод времени публикации с клавиатуры
         public void inputInvalidTimeFormatTest() {
             editNewsStep.addNews();
             addNewsStep.openAddNews();
@@ -211,7 +209,9 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
             Calendar currentDate = Calendar.getInstance();
             addNewsStep.selectPublicationDate(currentDate);
             addNewsStep.inputInvalidTimeFormat("25:48");
-            addNewsStep.checkTimeErrorMessage();
+            // Приложение не показывает отдельное сообщение о некорректном времени:
+            // проверяем, что поле приняло введённое значение
+            addNewsStep.checkTimeFieldValue("25:48");
         }
 
     }

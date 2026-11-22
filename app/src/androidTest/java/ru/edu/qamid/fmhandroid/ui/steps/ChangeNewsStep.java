@@ -9,7 +9,7 @@ public class ChangeNewsStep {
     private final ChangeNewsPage changeNewsPage;
     public ChangeNewsStep() {this.changeNewsPage = new ChangeNewsPage();}
 
-    @Step("Открыть страницу редактирования новоoсти")
+    @Step("Открыть страницу редактирования новости")
     public void openChangeNews() {changeNewsPage.openChangePage();}
 
 
@@ -57,7 +57,7 @@ public class ChangeNewsStep {
     @Step("Предупреждение, что данные не будут сохранены при отмене редактирования")
     public void getCancelMessage() {changeNewsPage.getCancelMessage();}
 
-    @Step("Подтверждить отмену редактирования")
+    @Step("Подтвердить отмену редактирования")
     public void clickOkButton() {changeNewsPage.clickOkButton();}
 
     @Step("Вернуться к редактированию")

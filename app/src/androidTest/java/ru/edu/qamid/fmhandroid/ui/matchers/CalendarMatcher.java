@@ -90,7 +90,7 @@ public class CalendarMatcher {
             }
 
             @Override
-            public void describeMismatchSafely(Root root, Description description) {
+            public void describeMismatch(Object item, Description description) {
                 description.appendText(mismatchReason);
             }
 
@@ -136,6 +136,9 @@ public class CalendarMatcher {
             @Override
             public void describeTo(Description description) {
                 description.appendText("ожидается календарь с: " + expectedMonthYear + ", число " + expectedDay);
+                if (!"неизвестно".equals(mismatchReason)) {
+                    description.appendText(" | " + mismatchReason);
+                }
             }
 
             @Override
@@ -146,13 +149,18 @@ public class CalendarMatcher {
 
                     List<TextView> textViews = getAllTextViews(decorView);
                     boolean hasMonthYear = false, hasDay = false;
+                    List<String> foundTexts = new ArrayList<>();
 
                     for (TextView tv : textViews) {
                         String text = tv.getText().toString().trim().toLowerCase();
+                        if (text.isEmpty()) continue;
+                        foundTexts.add(text);
                         if (text.equals(expectedMonthYear)) hasMonthYear = true;
                         if (text.equals(expectedDay)) hasDay = true;
                     }
 
+                    mismatchReason = "месяц/год=" + hasMonthYear + ", число=" + hasDay
+                            + " | найдено: " + String.join(", ", foundTexts);
                     return hasMonthYear && hasDay;
                 } catch (Exception e) {
                     return false;
@@ -160,7 +168,7 @@ public class CalendarMatcher {
             }
 
             @Override
-            public void describeMismatchSafely(Root root, Description description) {
+            public void describeMismatch(Object item, Description description) {
                 description.appendText(mismatchReason);
             }
 

@@ -5,10 +5,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 
 
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.waitDisplayed;
-import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withContentDescription;
+
+import android.view.View;
 
 import io.qameta.allure.kotlin.Step;
-import ru.edu.qamid.fmhandroid.R;
+import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.pages.AuthorizationPage;
 
 
@@ -23,10 +24,8 @@ public class AuthorizationStep {
 
     @Step("Открыть страницу авторизации")
     public void loadAuthorizationPage() {
-        authorizationPage.getSplashScreen();
+        onView(isRoot()).perform(waitDisplayed(R.id.login_edit_text, 20000));
         authorizationPage.getAuthPage();
-//        onView(withContentDescription("Подложка основных экранов приложения"));
-//        onView(isRoot()).perform(waitDisplayed(R.id.nav_host_fragment, 5000));
     }
 
     @Step("Ввести логин '{value}'")
@@ -45,13 +44,13 @@ public class AuthorizationStep {
     }
 
     @Step("Проверить первое сообщение об ошибке")
-    public void checkErrorMessage1() {
-        authorizationPage.checkHasErrorMessage1();
+    public void checkErrorMessage1(View decorView) {
+        authorizationPage.checkHasErrorMessage1(decorView);
     }
 
     @Step("Проверить второе сообщение об ошибке")
-    public void checkErrorMessage2() {
-        authorizationPage.checkHasErrorMessage2();
+    public void checkErrorMessage2(View decorView) {
+        authorizationPage.checkHasErrorMessage2(decorView);
     }
 
     @Step("Ввести валидный логин")

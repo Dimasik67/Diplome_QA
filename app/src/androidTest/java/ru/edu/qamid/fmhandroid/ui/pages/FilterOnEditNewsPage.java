@@ -2,7 +2,7 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.closeSoftKeyboardIfVisible;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -18,7 +18,7 @@ import androidx.test.espresso.ViewInteraction;
 
 import java.util.Calendar;
 
-import ru.edu.qamid.fmhandroid.R;
+import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.data.DateTimePicker;
 import ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher;
 
@@ -28,7 +28,7 @@ public class FilterOnEditNewsPage {
     public ViewInteraction startDate;
     public ViewInteraction endDate;
     public ViewInteraction checkBoxActive;
-    public ViewInteraction checkBaxNotActive;
+    public ViewInteraction checkBoxNotActive;
     public ViewInteraction filterButton;
     public ViewInteraction cancelButton;
     public ViewInteraction categoryList;
@@ -38,7 +38,7 @@ public class FilterOnEditNewsPage {
 
     private final static String TITLE = "Фильтровать новости";
     private final static String FILTER_BUTTON = "Фильтровать";
-    private final static String CANSEL_BUTTON = "Отмена";
+    private final static String CANCEL_BUTTON = "Отмена";
     private final static String ACTIVE = "Активна";
     private final static String NOT_ACTIVE = "Не активна";
     private final static String AUTO_COMPLETE = "Массаж";
@@ -49,29 +49,29 @@ public class FilterOnEditNewsPage {
                 withId(R.id.filter_news_title_text_view),
                 withText(TITLE)
         ));
-        category = onView(withId(R.id.news_item_category_text_input_layout));
-        categoryList = onView(CustomViewMatcher.recyclerVievSizeMatcher(8));
+        category = onView(withId(R.id.news_category_text_input_layout));
+        categoryList = onView(CustomViewMatcher.recyclerViewSizeMatcher(8));
         selectCategoryButton = onView(allOf(
-                childAtPosition(withId(R.id.news_item_category_text_input_layout), 2),
+                childAtPosition(withId(R.id.news_category_text_input_layout), 2),
                 withContentDescription(SELECT_BUTTON)));
-        startDate = onView(withId(R.id.news_item_publish_date_start_text_input_edit_text));
-        endDate = onView(withId(R.id.news_item_publish_date_end_text_input_edit_text));
+        startDate = onView(withId(R.id.filter_news_date_start_edit_text));
+        endDate = onView(withId(R.id.filter_news_date_end_edit_text));
         checkBoxActive = onView(allOf(
-                withId(R.id.filter_news_active_material_check_box),
+                withId(R.id.filter_news_active_check_box),
                 withText(ACTIVE)
         ));
-        checkBaxNotActive = onView(allOf(
-                withId(R.id.filter_news_inactive_material_check_box),
+        checkBoxNotActive = onView(allOf(
+                withId(R.id.filter_news_inactive_check_box),
                 withText(NOT_ACTIVE)
         ));
-        autoCompleteCategory = onView(withId(R.id.news_item_category_text_auto_complete_text_view));
+        autoCompleteCategory = onView(withId(R.id.news_category_auto_complete));
         filterButton = onView(allOf(
-                withId(R.id.filter_button),
+                withId(R.id.filter_news_apply_button),
                 withText(FILTER_BUTTON)
         ));
         cancelButton = onView(allOf(
-                withId(R.id.cancel_button),
-                withText(CANSEL_BUTTON)
+                withId(R.id.filter_news_cancel_button),
+                withText(CANCEL_BUTTON)
         ));
     }
     public void getFilter() {filterTitle.check(matches(isDisplayed()));}
@@ -83,7 +83,7 @@ public class FilterOnEditNewsPage {
     public void getCategoryList() {categoryList.check(matches(isDisplayed()));}
     public void getAutoCompleteCategory() {autoCompleteCategory.perform(typeText(AUTO_COMPLETE));}
     private void closeSoftKeyboardIfNeeded() {
-        closeSoftKeyboard();
+        closeSoftKeyboardIfVisible();
     }
     public void selectStartDate(Calendar date) {
         startDate.perform(click());
@@ -100,7 +100,7 @@ public class FilterOnEditNewsPage {
         endDate.check(matches(withText("")));
     }
     public void clickCheckBoxActive() {checkBoxActive.perform(click());}
-    public void clickCheckBoxNotActive() {checkBaxNotActive.perform(click());}
+    public void clickCheckBoxNotActive() {checkBoxNotActive.perform(click());}
     public void clickFilterButton() {filterButton.perform(click());}
     public void clickCancelButton() {cancelButton.perform(click()); }
 

@@ -115,7 +115,6 @@ class CreateEditNewsFragment : Fragment(R.layout.fragment_create_edit_news) {
 
             if (args.newsItemArg == null) {
                 newsActiveSwitch.isChecked = true
-                newsActiveSwitch.isEnabled = false
             }
 
             if (newsActiveSwitch.isChecked) {

@@ -86,6 +86,7 @@
     <string name="main_menu">Главное меню</string>
     <string name="filter_claim_list_menu_button">Меню фильтрации списка заявок</string>
     <string name="sort_news_list_button">Кнопка сортировки списка новостей</string>
+    <string name="filter_news_list_button">Кнопка фильтрации списка новостей</string>
     <string name="add_news_button">Кнопка добавления новости</string>
     <string name="news_category_image">Иконка категории новости</string>
     <string name="news_publish_icon">Иконка публикации новости</string>
@@ -101,4 +102,5 @@
     <string name="lost_network_connection">Отсутствует подключение к интернет. Проверьте соединение и попробуйте снова.</string>
     <string name="no_rules_for_news_control_panel">Управлять новостями может только Администратор</string>
     <string name="our_mission_title_text">Главное - жить любя</string>
+    <string name="expand_our_mission_card_button">Кнопка раскрытия карточки миссии</string>
 </resources>

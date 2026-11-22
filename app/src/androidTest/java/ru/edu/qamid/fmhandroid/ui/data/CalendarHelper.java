@@ -1,4 +1,4 @@
-package ru.edu.qamid.fmhandroid.ui.data;;
+package ru.edu.qamid.fmhandroid.ui.data;
 
 import java.util.Calendar;
 
@@ -6,6 +6,12 @@ public class CalendarHelper {
     private static final String[] MONTHS_RU = {
             "январь", "февраль", "март", "апрель", "май", "июнь",
             "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"
+    };
+
+    // Родительный падеж используется в contentDescription ячеек DatePicker
+    private static final String[] MONTHS_RU_GENITIVE = {
+            "января", "февраля", "марта", "апреля", "мая", "июня",
+            "июля", "августа", "сентября", "октября", "ноября", "декабря"
     };
 
     // Текущая дата
@@ -29,5 +35,10 @@ public class CalendarHelper {
     }
     public static String getDayString(Calendar date) {
         return String.valueOf(date.get(Calendar.DAY_OF_MONTH));
+    }
+
+    public static String getDayContentDescription(Calendar date) {
+        return getDayString(date) + " " + MONTHS_RU_GENITIVE[date.get(Calendar.MONTH)]
+                + " " + date.get(Calendar.YEAR);
     }
 }

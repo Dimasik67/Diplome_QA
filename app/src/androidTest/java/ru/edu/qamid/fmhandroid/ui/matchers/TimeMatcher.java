@@ -60,7 +60,7 @@ public class TimeMatcher {
             }
 
             @Override
-            public void describeMismatchSafely(Root root, Description description) {
+            public void describeMismatch(Object item, Description description) {
                 description.appendText(mismatchReason);
             }
 

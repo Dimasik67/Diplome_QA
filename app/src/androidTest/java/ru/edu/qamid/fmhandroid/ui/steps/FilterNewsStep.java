@@ -25,10 +25,10 @@ public class FilterNewsStep {
     public void categoryInput(String value) { filterNewsPage.categoryInput(value); }
 
     @Step("Ввести начальную дату '{date}'")
-    public void inputStartData(Calendar date) { filterNewsPage.inputStartData(date); }
+    public void inputStartDate(Calendar date) { filterNewsPage.inputStartDate(date); }
 
     @Step("Ввести конечную дату '{date}'")
-    public void inputEndData(Calendar date) { filterNewsPage.inputEndData(date); }
+    public void inputEndDate(Calendar date) { filterNewsPage.inputEndDate(date); }
 
     @Step("Нажать кнопку 'Фильтровать'")
     public void clickFilterButton() { filterNewsPage.clickFilterButton(); }
@@ -37,7 +37,7 @@ public class FilterNewsStep {
     public void clickCancelButton() { filterNewsPage.clickCancelButton(); }
 
     @Step("Сообщение об ошибке")
-    public void checkErrorMassage() { filterNewsPage.checkErrorMassage(); }
+    public void checkErrorMessage() { filterNewsPage.checkErrorMessage(); }
 
     @Step("Поле начальной даты пустое")
     public void checkStartDateIsEmpty() {filterNewsPage.checkStartDateIsEmpty();}

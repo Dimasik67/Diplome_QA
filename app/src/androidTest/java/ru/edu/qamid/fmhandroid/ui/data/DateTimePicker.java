@@ -2,23 +2,19 @@ package ru.edu.qamid.fmhandroid.ui.data;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.PickerActions.setDate;
+import static androidx.test.espresso.contrib.PickerActions.setTime;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static java.util.regex.Pattern.matches;
-import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.equalTo;
 
-import android.view.View;
-
-import androidx.test.espresso.Root;
-import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.espresso.matcher.ViewMatchers;
-
-import org.hamcrest.Matcher;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
-
-import ru.edu.qamid.fmhandroid.ui.matchers.CalendarMatcher;
-import ru.edu.qamid.fmhandroid.ui.matchers.TimeMatcher;
 
 public class DateTimePicker {
     public static void selectDateTime(Calendar dateTime) {
@@ -30,52 +26,34 @@ public class DateTimePicker {
      * Только дата
      */
     public static void selectDate(Calendar date) {
-        String monthYear = CalendarHelper.getMonthYear(date);
-        String day = CalendarHelper.getDayString(date);
-
-        while (true) {
-            try {
-                onView(withText(monthYear)).check(matches(isDisplayed()));
-                break;
-            } catch (Exception e) {
-                onView(anyOf(withContentDescription("Next month"),
-                        withText("›")
-                )).perform(click());
-            }
-        }
-
-        onView(withText(day))
-                .inRoot(CalendarMatcher.hasDate(date))
-                .perform(click());
+        onView(withClassName(equalTo(DatePicker.class.getName())))
+                .check(matches(isDisplayed()))
+                .perform(setDate(
+                        date.get(Calendar.YEAR),
+                        date.get(Calendar.MONTH) + 1,
+                        date.get(Calendar.DAY_OF_MONTH)
+                ));
+        clickOk();
     }
 
     /**
      * Только время
      */
     public static void selectTime(Calendar time) {
-        String hour = TimeHelper.getHour(time);
-        String minute = TimeHelper.getMinute(time);
+        onView(withClassName(equalTo(TimePicker.class.getName())))
+                .check(matches(isDisplayed()))
+                .perform(setTime(
+                        time.get(Calendar.HOUR_OF_DAY),
+                        time.get(Calendar.MINUTE)
+                ));
+        clickOk();
+    }
 
-        onView(withText(hour))
-                .inRoot(TimeMatcher.hasTime(time))
-                .perform(click());
-
-        onView(withText(minute))
-                .inRoot(TimeMatcher.hasTime(time))
-                .perform(click());
-
-        // Подтверждение (если есть)
+    private static void clickOk() {
         try {
-            onView(withText("OK")).inRoot(isDialog()).perform(click());
-        } catch (Exception ignored) {}
-    }
-
-    // Вспомогательные методы (можно вынести в BaseMatchers)
-    private static Matcher<View> withContentDescription(String desc) {
-        return ViewMatchers.withContentDescription(desc);
-    }
-
-    private static Matcher<Root> isDialog() {
-        return RootMatchers.isDialog();
+            onView(withId(android.R.id.button1)).perform(click());
+        } catch (RuntimeException ignored) {
+            onView(withText("OK")).perform(click());
+        }
     }
 }
