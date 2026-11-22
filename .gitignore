@@ -45,6 +45,6 @@ captures/
 *.zip
 *.tar.gz
 *.rar
-
+.DS_Store
 ### Gradle ###
 !gradle/wrapper/gradle-wrapper.jar
