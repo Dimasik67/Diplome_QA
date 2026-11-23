@@ -19,7 +19,6 @@ import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.edu.qamid.ui.AppActivity;
 import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
 import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
-import ru.edu.qamid.fmhandroid.ui.steps.ChangeNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.EditNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.FilterOnEditNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
@@ -82,7 +81,7 @@ public class FilterOnEditNewsTest {
     }
 
     @Test
-    @DisplayName("ТС-053. Заполнен чек-бокс статуса 'Активна'")
+    @DisplayName("ТС-053. Заполнен чекбокс статуса 'Активна'")
     public void checkBoxActiveNewsTest() {
         editNewsStep.filteredNews();
         filterOnEditNewsStep.openFilter();
@@ -93,7 +92,7 @@ public class FilterOnEditNewsTest {
     }
 
     @Test
-    @DisplayName("ТС-054. Заполнен чек-бокс статуса 'Не активна'")
+    @DisplayName("ТС-054. Заполнен чекбокс статуса 'Не активна'")
     public void checkBoxNotActiveNewsTest() {
         editNewsStep.filteredNews();
         filterOnEditNewsStep.openFilter();

@@ -26,7 +26,7 @@ import ru.edu.qamid.fmhandroid.ui.steps.QuotespageStep;
 //@RunWith(AndroidJUnit4.class)
 @RunWith(AllureAndroidJUnit4.class)
 
-@Epic("Блок 2. Главная страница приложения. Тестовые сценарии ТС-014 - ТС-018")
+@Epic("Блок 2. Главная страница приложения. Тестовые сценарии ТС-014 - ТС-017")
 
 public class AppHomePageTest {
     AppHomepageStep appHomepageStep = new AppHomepageStep();
