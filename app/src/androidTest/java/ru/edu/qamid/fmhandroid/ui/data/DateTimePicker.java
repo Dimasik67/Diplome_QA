@@ -26,8 +26,8 @@ public class DateTimePicker {
      * Только дата
      */
     public static void selectDate(Calendar date) {
+        waitForPicker(DatePicker.class.getName());
         onView(withClassName(equalTo(DatePicker.class.getName())))
-                .check(matches(isDisplayed()))
                 .perform(setDate(
                         date.get(Calendar.YEAR),
                         date.get(Calendar.MONTH) + 1,
@@ -40,13 +40,28 @@ public class DateTimePicker {
      * Только время
      */
     public static void selectTime(Calendar time) {
+        waitForPicker(TimePicker.class.getName());
         onView(withClassName(equalTo(TimePicker.class.getName())))
-                .check(matches(isDisplayed()))
                 .perform(setTime(
                         time.get(Calendar.HOUR_OF_DAY),
                         time.get(Calendar.MINUTE)
                 ));
         clickOk();
+    }
+
+    private static void waitForPicker(String className) {
+        long endTime = System.currentTimeMillis() + 5000L;
+        AssertionError lastError = null;
+        do {
+            try {
+                onView(withClassName(equalTo(className))).check(matches(isDisplayed()));
+                return;
+            } catch (RuntimeException | AssertionError e) {
+                lastError = e instanceof AssertionError ? (AssertionError) e : new AssertionError(e);
+                android.os.SystemClock.sleep(100L);
+            }
+        } while (System.currentTimeMillis() < endTime);
+        throw new AssertionError("Picker " + className + " не появился", lastError);
     }
 
     private static void clickOk() {

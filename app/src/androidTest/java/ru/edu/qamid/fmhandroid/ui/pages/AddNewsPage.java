@@ -36,6 +36,7 @@ import java.util.Calendar;
 
 import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.data.DateTimePicker;
+import ru.edu.qamid.fmhandroid.ui.data.ToastRecorder;
 import ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher;
 
 public class AddNewsPage {
@@ -57,7 +58,6 @@ public class AddNewsPage {
     public ViewInteraction cancelMessage;
     public ViewInteraction okButton;
     public ViewInteraction cancelButton2;
-    public ViewInteraction saveError;
 
 
 
@@ -75,6 +75,7 @@ public class AddNewsPage {
     private final static String OK_BUTTON = "OK";
     private final static String CANCEL_BUTTON2 = "ОТМЕНА";
     private final static String SAVE_ERROR = "Сохранение не удалось. Попробуйте позднее.";
+    private final static String EMPTY_FIELDS_ERROR = "Заполните пустые поля";
 
 
 
@@ -102,7 +103,6 @@ public class AddNewsPage {
         cancelMessage = onView(isRoot());
         okButton = onView(withButtonText(OK_BUTTON));
         cancelButton2 = onView(withButtonText(CANCEL_BUTTON2));
-        saveError = onView(withText(SAVE_ERROR));
 
 
     }
@@ -215,7 +215,8 @@ public class AddNewsPage {
     public void checkCancelMessage() {cancelMessage.check(matches(withTextOnScreen(CANCEL_MESSAGE)));}
     public void clickOkButton() {okButton.perform(click());}
     public void clickCancelButton2() {cancelButton2.perform(click()); }
-    public void checkSaveErrorMessage() {saveError.check(matches(isDisplayed())); }
+    public void checkSaveErrorMessage() { ToastRecorder.checkMessage(SAVE_ERROR); }
+    public void checkEmptyFieldsErrorMessage() { ToastRecorder.checkMessage(EMPTY_FIELDS_ERROR); }
     public void inputInvalidTime(String time) {
         publicationTime.perform(replaceText(time));
         closeSoftKeyboardIfNeeded();

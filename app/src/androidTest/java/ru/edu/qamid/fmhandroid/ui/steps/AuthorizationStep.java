@@ -6,8 +6,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.waitDisplayed;
 
-import android.view.View;
-
 import io.qameta.allure.kotlin.Step;
 import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.pages.AuthorizationPage;
@@ -44,13 +42,13 @@ public class AuthorizationStep {
     }
 
     @Step("Проверить первое сообщение об ошибке")
-    public void checkErrorMessage1(View decorView) {
-        authorizationPage.checkHasErrorMessage1(decorView);
+    public void checkErrorMessage1() {
+        authorizationPage.checkHasErrorMessage1();
     }
 
     @Step("Проверить второе сообщение об ошибке")
-    public void checkErrorMessage2(View decorView) {
-        authorizationPage.checkHasErrorMessage2(decorView);
+    public void checkErrorMessage2() {
+        authorizationPage.checkHasErrorMessage2();
     }
 
     @Step("Ввести валидный логин")

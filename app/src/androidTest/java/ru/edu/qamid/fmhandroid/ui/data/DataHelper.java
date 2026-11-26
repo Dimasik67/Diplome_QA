@@ -2,15 +2,11 @@ package ru.edu.qamid.fmhandroid.ui.data;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 
 import android.content.Context;
 import android.os.SystemClock;
@@ -101,27 +97,6 @@ public class DataHelper {
                 throw new IllegalStateException("Ни один из элементов не появился за " + timeoutMs + " мс");
             }
         };
-    }
-
-    public static void checkToastIsDisplayed(String message, View decorView) {
-        checkToastIsDisplayed(message, decorView, 10000L);
-    }
-
-    public static void checkToastIsDisplayed(String message, View decorView, long timeoutMs) {
-        final long endTime = System.currentTimeMillis() + timeoutMs;
-        do {
-            try {
-                onView(withText(message))
-                        .inRoot(withDecorView(not(is(decorView))))
-                        .check(matches(isDisplayed()));
-                return;
-            } catch (NoMatchingRootException | NoMatchingViewException | AssertionError ignored) {
-                SystemClock.sleep(100L);
-            }
-        } while (System.currentTimeMillis() < endTime);
-
-        throw new AssertionError("Toast с текстом <" + message + "> не отображался в течение "
-                + timeoutMs + " мс");
     }
 
     public static void closeSoftKeyboardIfVisible() {

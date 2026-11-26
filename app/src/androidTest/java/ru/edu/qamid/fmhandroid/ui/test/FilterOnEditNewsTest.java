@@ -1,24 +1,18 @@
 package ru.edu.qamid.fmhandroid.ui.test;
 
-import android.view.View;
-
-import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.idling.CountingIdlingResource;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.Calendar;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.ui.AppActivity;
-import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
-import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
+import ru.edu.qamid.fmhandroid.ui.steps.AddNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.EditNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.FilterOnEditNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
@@ -29,44 +23,19 @@ import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
 
 @Epic("Блок 7. Страница 'Панель управления'. Подпункт 7.3. Фильтрация новостей. Тестовые сценарии ТС-052 - ТС-055")
 
-public class FilterOnEditNewsTest {
-    AppHomepageStep appHomepageStep = new AppHomepageStep();
-    AuthorizationStep authorizationStep = new AuthorizationStep();
+public class FilterOnEditNewsTest extends BaseTest {
     NewspageStep newspageStep = new NewspageStep();
     EditNewsStep editNewsStep = new EditNewsStep();
+    AddNewsStep addNewsStep = new AddNewsStep();
     FilterOnEditNewsStep filterOnEditNewsStep = new FilterOnEditNewsStep();
 
-    @Rule
-    public ActivityScenarioRule<AppActivity> activityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-    private View decorView;
-
-    private static final String GLOBAL_RESOURCE_NAME = "GLOBAL";
-
     @Before
-    public void logIn() {
-        CountingIdlingResource espressoIdlingResource = new CountingIdlingResource(GLOBAL_RESOURCE_NAME);
-        IdlingRegistry.getInstance().register(espressoIdlingResource);
-        authorizationStep.loadAuthorizationPage();
-        authorizationStep.checkAuthTitleIsDisplayed();
-        activityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
-        IdlingRegistry.getInstance().unregister(espressoIdlingResource);
-        authorizationStep.inputLogin(authorizationStep.getValidLogin());
-        authorizationStep.inputPassword(authorizationStep.getValidPassword());
-        authorizationStep.clickLoginButton();
-        appHomepageStep.loadAppHomepagePage();
-        appHomepageStep.checkHomePageImage();
+    public void openFilterOnEditNewsPage() {
         appHomepageStep.openNewsPage();
         newspageStep.openNewspage();
         newspageStep.clickEditNewsButton();
         editNewsStep.openEditNews();
     }
-
-    @After
-    public void tearDown() {
-        appHomepageStep.logoutIfLoggedIn();
-    }
-
 
     @Test
     @DisplayName("ТС-052. Фильтрация новостей по категории 'Массаж'")
@@ -88,25 +57,39 @@ public class FilterOnEditNewsTest {
         filterOnEditNewsStep.clickCheckBoxNotActive();
         filterOnEditNewsStep.clickFilterButton();
         editNewsStep.openEditNews();
-        editNewsStep.checkNewsStatusActive();
+        editNewsStep.checkAnyNewsStatusActive();
     }
 
     @Test
     @DisplayName("ТС-054. Заполнен чекбокс статуса 'Не активна'")
     public void checkBoxNotActiveNewsTest() {
+        // На сервере доступны только активные новости, поэтому создаём тестовую неактивную.
+        String title = uniqueTitle("Неактивная новость для фильтра");
+        editNewsStep.addNews();
+        addNewsStep.openAddNews();
+        addNewsStep.inputNewsCategory("Массаж");
+        addNewsStep.inputNewsItem(title);
+        Calendar publicationDate = Calendar.getInstance();
+        addNewsStep.selectPublicationDate(publicationDate);
+        addNewsStep.selectPublicationTime(publicationDate);
+        addNewsStep.inputNewsDescription("Проверка фильтра по статусу");
+        addNewsStep.getSwitcherOff();
+        addNewsStep.clickSaveButton();
+        editNewsStep.openEditNews();
+
         editNewsStep.filteredNews();
         filterOnEditNewsStep.openFilter();
         filterOnEditNewsStep.clickCheckBoxActive();
         filterOnEditNewsStep.clickFilterButton();
         editNewsStep.openEditNews();
-        editNewsStep.checkNewsStatusNotActive();
+        editNewsStep.checkNewsStatusNotActive(title);
     }
 
     @Test
     @DisplayName("ТС-055. Работа кнопки 'Отмена'")
     public void cancelButtonTest() {
         editNewsStep.filteredNews();
-        filterOnEditNewsStep.clickCancelButton();
+        filterOnEditNewsStep.openFilter();
         filterOnEditNewsStep.clickCancelButton();
         editNewsStep.openEditNews();
     }

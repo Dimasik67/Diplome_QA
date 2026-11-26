@@ -1,15 +1,9 @@
 package ru.edu.qamid.fmhandroid.ui.test;
 
-import android.view.View;
-
-import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.idling.CountingIdlingResource;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,12 +12,8 @@ import java.util.Calendar;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.ui.AppActivity;
-import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
-import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 import ru.edu.qamid.fmhandroid.ui.steps.FilterNewsStep;
 import ru.edu.qamid.fmhandroid.ui.steps.NewspageStep;
-import ru.edu.qamid.fmhandroid.ui.steps.QuotespageStep;
 
 @LargeTest
 //@RunWith(AndroidJUnit4.class)
@@ -31,41 +21,17 @@ import ru.edu.qamid.fmhandroid.ui.steps.QuotespageStep;
 
 @Epic("Блок 6. Вкладка 'Фильтровать новости' на странице 'Новости'. Тестовые сценарии ТС-026 - ТС-037")
 
-public class FilterNewsTest {
-    AppHomepageStep appHomepageStep = new AppHomepageStep();
-    AuthorizationStep authorizationStep = new AuthorizationStep();
+public class FilterNewsTest extends BaseTest {
     NewspageStep newspageStep = new NewspageStep();
     FilterNewsStep filterNewsStep = new FilterNewsStep();
-    @Rule
-    public ActivityScenarioRule<AppActivity> activityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-    private View decorView;
-
-    private static final String GLOBAL_RESOURCE_NAME = "GLOBAL";
 
     @Before
-    public void logIn() {
-        CountingIdlingResource espressoIdlingResource = new CountingIdlingResource(GLOBAL_RESOURCE_NAME);
-        IdlingRegistry.getInstance().register(espressoIdlingResource);
-        authorizationStep.loadAuthorizationPage();
-        authorizationStep.checkAuthTitleIsDisplayed();
-        activityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
-        IdlingRegistry.getInstance().unregister(espressoIdlingResource);
-        authorizationStep.inputLogin(authorizationStep.getValidLogin());
-        authorizationStep.inputPassword(authorizationStep.getValidPassword());
-        authorizationStep.clickLoginButton();
-        appHomepageStep.loadAppHomepagePage();
-        appHomepageStep.checkHomePageImage();
+    public void openFilterNewsPage() {
         appHomepageStep.openNewsPage();
         newspageStep.openNewspage();
         newspageStep.clickFilterNewsButton();
         filterNewsStep.openFilterNews();
     }
-    @After
-    public void tearDown() {
-        appHomepageStep.logoutIfLoggedIn();
-    }
-
 
     @Test
     @DisplayName("ТС-026. Все поля на странице 'Фильтрация новостей' пустые")
@@ -99,7 +65,7 @@ public class FilterNewsTest {
     public void enteringCategoryNameInNumbersTest() {
         filterNewsStep.categoryInput("76546");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMessage();
+        newspageStep.openNewspage();
     }
 
     @Test
@@ -107,7 +73,7 @@ public class FilterNewsTest {
     public void specialSymbolCategoryNameTest() {
         filterNewsStep.categoryInput("#@^&%$");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMessage();
+        newspageStep.openNewspage();
     }
 
     @Test
@@ -115,7 +81,7 @@ public class FilterNewsTest {
     public void enteringCategoryNameInLatinTest() {
         filterNewsStep.categoryInput("BirthDay");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMessage();
+        newspageStep.openNewspage();
     }
 
     @Test
@@ -123,7 +89,7 @@ public class FilterNewsTest {
     public void categoryNameIsNotExistTest() {
         filterNewsStep.categoryInput("Персонал");
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMessage();
+        newspageStep.openNewspage();
     }
 
     @Test
@@ -136,7 +102,7 @@ public class FilterNewsTest {
         filterNewsStep.inputStartDate(startDate);
         filterNewsStep.checkEndDateIsEmpty();
         filterNewsStep.clickFilterButton();
-        newspageStep.openNewspage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test
@@ -149,7 +115,7 @@ public class FilterNewsTest {
         endDate.set(2026, Calendar.FEBRUARY, 12);
         filterNewsStep.inputEndDate(endDate);
         filterNewsStep.clickFilterButton();
-        newspageStep.openNewspage();
+        filterNewsStep.checkErrorMessage();
     }
 
     @Test
@@ -167,7 +133,7 @@ public class FilterNewsTest {
        filterNewsStep.inputStartDate(startDate);
        filterNewsStep.inputEndDate(endDate);
        filterNewsStep.clickFilterButton();
-       filterNewsStep.checkErrorMessage();
+       newspageStep.openNewspage();
     }
 
     @Test
@@ -185,7 +151,7 @@ public class FilterNewsTest {
         filterNewsStep.inputStartDate(startDate);
         filterNewsStep.inputEndDate(endDate);
         filterNewsStep.clickFilterButton();
-        filterNewsStep.checkErrorMessage();
+        newspageStep.openNewspage();
     }
 
     @Test

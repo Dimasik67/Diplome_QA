@@ -1,26 +1,14 @@
 package ru.edu.qamid.fmhandroid.ui.test;
 
-
-import android.view.View;
-
-import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.idling.CountingIdlingResource;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Epic;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.edu.qamid.ui.AppActivity;
-import ru.edu.qamid.fmhandroid.ui.steps.AppHomepageStep;
-import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 
 @LargeTest
 //@RunWith(AndroidJUnit4.class)
@@ -28,26 +16,10 @@ import ru.edu.qamid.fmhandroid.ui.steps.AuthorizationStep;
 
 @Epic("Блок 1. Авторизация пользователя. Тестовые сценарии ТС-001 - ТС-013")
 
-public class AuthorizationTest {
-    AuthorizationStep authorizationStep = new AuthorizationStep();
-    AppHomepageStep appHomepageStep = new AppHomepageStep();
-
-    @Rule
-    public ActivityScenarioRule<AppActivity> activityScenarioRule =
-            new ActivityScenarioRule<>(AppActivity.class);
-    private View decorView;
-
-    private static final String GLOBAL_RESOURCE_NAME = "GLOBAL";
-
-
-    @Before
-    public void setUp() {
-        CountingIdlingResource espressoIdlingResource = new CountingIdlingResource(GLOBAL_RESOURCE_NAME);
-        IdlingRegistry.getInstance().register(espressoIdlingResource);
-        authorizationStep.loadAuthorizationPage();
-        authorizationStep.checkAuthTitleIsDisplayed();
-        activityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
-        IdlingRegistry.getInstance().unregister(espressoIdlingResource);
+public class AuthorizationTest extends BaseTest {
+    @Override
+    protected boolean isLoginRequired() {
+        return false;
     }
 
 
@@ -68,7 +40,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage1(decorView);
+        authorizationStep.checkErrorMessage1();
     }
 
     @Test
@@ -77,7 +49,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("q");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -86,7 +58,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("LoGiN2");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -95,7 +67,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("@#$%**^");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -104,7 +76,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("54535");
         authorizationStep.inputPassword(authorizationStep.getValidPassword());
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -113,7 +85,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage1(decorView);
+        authorizationStep.checkErrorMessage1();
     }
 
     @Test
@@ -122,7 +94,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("j");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -131,7 +103,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("&*^%#");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -140,7 +112,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin(authorizationStep.getValidLogin());
         authorizationStep.inputPassword("56512");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -149,7 +121,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("log");
         authorizationStep.inputPassword("pass");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage2(decorView);
+        authorizationStep.checkErrorMessage2();
     }
 
     @Test
@@ -158,7 +130,7 @@ public class AuthorizationTest {
         authorizationStep.inputLogin("");
         authorizationStep.inputPassword("");
         authorizationStep.clickLoginButton();
-        authorizationStep.checkErrorMessage1(decorView);
+        authorizationStep.checkErrorMessage1();
     }
 
     @Test
@@ -174,9 +146,5 @@ public class AuthorizationTest {
         authorizationStep.loadAuthorizationPage();
     }
 
-    @After
-    public void tearDown() {
-        appHomepageStep.logoutIfLoggedIn();
-    }
 
 }

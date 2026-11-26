@@ -3,11 +3,11 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.checkDisplayedWithRetry;
 
 import androidx.test.espresso.ViewInteraction;
@@ -23,10 +23,8 @@ public class NewspagePage {
     public ViewInteraction editNewsButton;
     public ViewInteraction filterNewsButton;
 
-
     private static final String MENU_ITEM_NEWS = "Новости";
     private static final String MENU_ITEM_MAIN_PAGE = "Главная";
-
 
     public NewspagePage() {
         newsPage = onView(withId(R.id.news_list_container));
@@ -38,13 +36,9 @@ public class NewspagePage {
         editNewsButton = onView(withId(R.id.news_edit_button));
         filterNewsButton = onView(withId(R.id.news_filter_button));
 
-        mainMenuElementNews = onView(allOf(
-                withId(R.id.menu_item_news),
-                withText(MENU_ITEM_NEWS)));
+        mainMenuElementNews = onView(withText(MENU_ITEM_NEWS)).inRoot(isPlatformPopup());
 
-        mainMenuElementMainPage = onView(allOf(
-                withId(R.id.menu_item_main),
-                withText(MENU_ITEM_MAIN_PAGE)));
+        mainMenuElementMainPage = onView(withText(MENU_ITEM_MAIN_PAGE)).inRoot(isPlatformPopup());
     }
 
     public void getNewspagePage() {checkDisplayedWithRetry(newsPage); }

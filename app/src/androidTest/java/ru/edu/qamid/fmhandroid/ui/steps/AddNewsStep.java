@@ -90,6 +90,9 @@ public class AddNewsStep {
     @Step("Ошибка при сохранении новости с несуществующей в списке категорией")
     public void checkSaveErrorMessage() {addNewsPage.checkSaveErrorMessage();}
 
+    @Step("Сообщение о незаполненных полях новости")
+    public void checkEmptyFieldsErrorMessage() {addNewsPage.checkEmptyFieldsErrorMessage();}
+
     @Step("Ввод некорректного формата времени {'time'}")
     public void inputInvalidTimeFormat(String time) {addNewsPage.inputInvalidTime(time);}
 

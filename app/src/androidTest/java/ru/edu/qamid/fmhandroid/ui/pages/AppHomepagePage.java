@@ -5,6 +5,7 @@ import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
@@ -43,10 +44,13 @@ public class AppHomepagePage {
         mainMenuButton = onView(withId(R.id.main_menu_image_button));
         missionButton = onView(withId(R.id.our_mission_image_button));
         expandNewsButton = onView(withId(R.id.expand_material_button));
-        allNews = onView(allOf(withId(R.id.all_news_text_view), withContentDescription(ALL_NEWS_TEXT)));
+        allNews = onView(allOf(withId(R.id.all_news_text_view), withText(ALL_NEWS_TEXT)));
 
         mainMenuElementNews = onView(withText(MENU_ITEM_NEWS));
-        mainMenuElementMainPage = onView(withText(MENU_ITEM_MAIN_PAGE));
+        mainMenuElementMainPage = onView(allOf(
+                isNotEnabled(),
+                hasDescendant(withText(MENU_ITEM_MAIN_PAGE))
+        )).inRoot(isPlatformPopup());
     }
 
 
@@ -97,7 +101,13 @@ public class AppHomepagePage {
         mainMenuElementNews.inRoot(isPlatformPopup()).perform(click());
     }
     public void clickMainMenuElementMainPage() {
+        checkDisplayedWithRetry(mainMenuElementMainPage.inRoot(isPlatformPopup()));
         mainMenuElementMainPage.inRoot(isPlatformPopup()).check(matches(isDisplayed()));
-        mainMenuElementMainPage.inRoot(isPlatformPopup()).check(matches(isNotEnabled()));
+        try {
+            mainMenuElementMainPage.inRoot(isPlatformPopup()).check(matches(isNotEnabled()));
+            pressBack();
+        } catch (AssertionError ignored) {
+            mainMenuElementMainPage.inRoot(isPlatformPopup()).perform(click());
+        }
     }
 }

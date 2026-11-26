@@ -2,14 +2,15 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.closeSoftKeyboardIfVisible;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.isDialog;
+import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.childAtPosition;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withButtonId;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withButtonText;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withContentDescription;
@@ -40,17 +41,17 @@ public class FilterNewsPage {
     private static final String CATEGORY_NAME = "Объявление";
     private static final String FILTER_BUTTON_TEXT = "Фильтровать";
     private static final String CANCEL_BUTTON_TEXT = "Отмена";
-    private static final String ERROR_MESSAGE = "Некорректный ввод";
+    private static final String ERROR_MESSAGE = "Неверно указан период";
 
     public FilterNewsPage() {
         filterNewsTitle = onView(allOf(
                 withId(R.id.filter_news_title_text_view),
-                CustomViewMatcher.withContentDescription(TITLE_TEXT)
+                withText(TITLE_TEXT)
         ));
 
-        inputNewsCategory = onView(withId(R.id.news_category_text_input_layout));
+        inputNewsCategory = onView(withId(R.id.filter_news_category_auto_complete));
         categorySelectionButton = onView(allOf(
-                childAtPosition(withId(R.id.news_category_text_input_layout), 2),
+                isDisplayed(),
                 withContentDescription("Показать раскрывающееся меню")
         ));
         startDateFilter = onView(withId(R.id.filter_news_date_start_edit_text));
@@ -63,18 +64,18 @@ public class FilterNewsPage {
                 withButtonId(R.id.filter_news_cancel_button),
                 withButtonText(CANCEL_BUTTON_TEXT)
         ));
-        errorMessage = onView(withText(ERROR_MESSAGE));
-        categoryList = onView(CustomViewMatcher.recyclerViewSizeMatcher(8));
-        autoComplete = onView(withId(R.id.news_category_auto_complete));
+        errorMessage = onView(withText(ERROR_MESSAGE)).inRoot(isDialog());
+        categoryList = onView(withText(CATEGORY_NAME)).inRoot(isPlatformPopup());
+        autoComplete = onView(withId(R.id.filter_news_category_auto_complete));
 
     }
 
     public void getFilterNews() { filterNewsTitle.check(matches(isDisplayed())); }
     public void categoryInput(String value) {
-        inputNewsCategory.perform(typeText(value));
+        inputNewsCategory.perform(replaceText(value));
         closeSoftKeyboardIfNeeded();
     }
-    public void getAutoComplete() {autoComplete.perform(typeText(CATEGORY_NAME));}
+    public void getAutoComplete() {autoComplete.perform(replaceText(CATEGORY_NAME));}
     public void inputStartDate(Calendar date) {
         startDateFilter.perform(click());
         DateTimePicker.selectDate(date);

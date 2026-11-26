@@ -46,7 +46,12 @@ public class AppHomepageStep {
     public void clickExpandNewsButton() { appHomepagePage.clickExpandNewsButton(); }
 
     @Step("Нажать на строку 'Все новости'")
-    public void clickAllNews() { appHomepagePage.clickAllNews(); }
+    public void clickAllNews() {
+        if (!isViewDisplayed(R.id.all_news_text_view)) {
+            clickExpandNewsButton();
+        }
+        appHomepagePage.clickAllNews();
+    }
 
    @Step ("Переход с главной страницы на страницу 'Новости' через кнопку главного меню")
     public void openNewsPage() {
@@ -56,6 +61,9 @@ public class AppHomepageStep {
 
     @Step("Переход на главную страницу приложения через главное меню")
     public void openMainPage() {
+        if (isViewDisplayed(R.id.main_app_bar)) {
+            return;
+        }
         appHomepagePage.clickMainMenuButton();
         appHomepagePage.clickMainMenuElementMainPage();
     }

@@ -2,7 +2,10 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -19,6 +22,7 @@ import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withContentD
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withTextOnScreen;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 
 import ru.edu.qamid.R;
 import ru.edu.qamid.fmhandroid.ui.matchers.CustomViewAssertion;
@@ -64,52 +68,148 @@ public class EditNewsPage {
         ));
         sortNewsButton = onView(withId(R.id.news_sort_button));
         filterNewsButton = onView(withId(R.id.news_filter_button));
-        newsCard = onView(allOf(
-                childAtPosition(withId(R.id.news_list_recycler_view), 2),
-                        withId(R.id.news_item_material_card_view)));
+        newsCard = onView(newsCardMatcher());
         newsItem = onView(withId(R.id.news_item_title_text_view));
-        newsCreationDate = onView(withId(R.id.news_item_create_date_text_view));
-        newsPublicationDate = onView(withId(R.id.news_item_publication_date_text_view));
+        newsCreationDate = onView(allOf(
+                withId(R.id.news_item_create_date_text_view),
+                isDescendantOfA(newsCardMatcher())
+        ));
+        newsPublicationDate = onView(allOf(
+                withId(R.id.news_item_publication_date_text_view),
+                isDescendantOfA(newsCardMatcher())
+        ));
         newsStatusActive = onView(allOf(
                 withId(R.id.news_item_published_text_view),
-                withText(ACTIVE_NEWS)
+                withText(ACTIVE_NEWS),
+                isDescendantOfA(newsCardMatcher())
         ));
         newsStatusNotActive = onView(allOf(
                 withId(R.id.news_item_published_text_view),
-                withText(NOT_ACTIVE_NEWS)
+                withText(NOT_ACTIVE_NEWS),
+                isDescendantOfA(newsCardMatcher())
         ));
-        deleteNewsButton = onView(withId(R.id.news_item_delete_image_view));
-        editNewsButton = onView(withId(R.id.news_item_edit_image_view));
-        newsDescriptionButton = onView(withId(R.id.news_item_expand_image_view));
-        newsDescriptionText = onView(withId(R.id.news_item_description_text_view));
+        deleteNewsButton = onView(allOf(
+                withId(R.id.news_item_delete_image_view),
+                isDescendantOfA(newsCardMatcher())
+        ));
+        editNewsButton = onView(allOf(
+                withId(R.id.news_item_edit_image_view),
+                isDescendantOfA(newsCardMatcher())
+        ));
+        newsDescriptionButton = onView(allOf(
+                withId(R.id.news_item_expand_image_view),
+                isDescendantOfA(newsCardMatcher())
+        ));
+        newsDescriptionText = onView(allOf(
+                withId(R.id.news_item_description_text_view),
+                isDescendantOfA(newsCardMatcher())
+        ));
         newsList = onView(withId(R.id.news_list_recycler_view));
         deleteMessage = onView(isRoot());
         okButton = onView(withButtonText(OK_BUTTON));
         cancelButton = onView(withButtonText(CANCEL_BUTTON));
         categoryIcon = onView(allOf(
-                withId(R.id.category_icon_image_view),
-                withContentDescription(CATEGORY_ICON),
-                withText(ICON_TEXT)
+                withId(R.id.news_item_title_text_view),
+                withText(ICON_TEXT),
+                isDescendantOfA(newsCardMatcher())
         ));
+    }
+
+    private static org.hamcrest.Matcher<android.view.View> newsCardMatcher() {
+        return allOf(
+                withId(R.id.news_item_material_card_view),
+                childAtPosition(withId(R.id.news_list_recycler_view), 2)
+        );
+    }
+
+    private static org.hamcrest.Matcher<android.view.View> newsCardWithTitle(String title) {
+        return allOf(
+                withId(R.id.news_item_material_card_view),
+                hasDescendant(allOf(withId(R.id.news_item_title_text_view), withText(title)))
+        );
+    }
+
+    private void scrollToNewsCard() {
+        onView(withId(R.id.news_list_recycler_view))
+                .perform(RecyclerViewActions.scrollToPosition(2));
+    }
+
+    private void scrollToNewsItem(String title) {
+        onView(withId(R.id.news_list_recycler_view)).perform(
+                RecyclerViewActions.scrollTo(hasDescendant(withText(title)))
+        );
     }
 
     public void getControlPanel() {checkDisplayedWithRetry(controlPanel); }
     public void clickAddNewsButton() { addNewsButton.perform(click()); }
     public void clickSortNewsButton() { sortNewsButton.perform(click()); }
     public void clickFilterNewsButton() { filterNewsButton.perform(click()); }
-    public void checkNewsCard() { newsCard.check(matches(isDisplayed())); }
+    public void checkNewsCard() {
+        scrollToNewsCard();
+        newsCard.check(matches(isDisplayed()));
+    }
     public void getNewsItem(String value) {
+        scrollToNewsItem(value);
         onView(allOf(withId(R.id.news_item_title_text_view), withText(value)))
                 .check(matches(isDisplayed()));
     }
-    public void getNewsCreationDate(String value) { newsCreationDate.check(hasText(value)); }
-    public void getNewsPublicationDate(String value) { newsPublicationDate.check(hasText(value)); }
-    public void checkNewsStatusActive() { newsStatusActive.check(matches(isDisplayed()));  }
-    public void checkNewsStatusNotActive() { newsStatusNotActive.check(matches(isDisplayed())); }
-    public void clickDeleteButton() { deleteNewsButton.perform(click()); }
-    public void clickEditNewsButton() { editNewsButton.perform(click()); }
-    public void clickNewsDescriptionButton() { newsDescriptionButton.perform(click()); }
-    public void checkNewsDescriptionText() { newsDescriptionText.check(matches(isDisplayed())); }
+    public void getNewsCreationDate(String value) {
+        scrollToNewsCard();
+        newsCreationDate.check(hasText(value));
+    }
+    public void getNewsPublicationDate(String value) {
+        scrollToNewsCard();
+        newsPublicationDate.check(hasText(value));
+    }
+    public void checkNewsStatusActive() {
+        scrollToNewsCard();
+        newsStatusActive.check(matches(isDisplayed()));
+    }
+    public void checkNewsStatusNotActive() {
+        scrollToNewsCard();
+        newsStatusNotActive.check(matches(isDisplayed()));
+    }
+    public void checkNewsStatusActive(String title) { checkNewsStatusForItem(title, ACTIVE_NEWS); }
+    public void checkNewsStatusNotActive(String title) { checkNewsStatusForItem(title, NOT_ACTIVE_NEWS); }
+    private void checkNewsStatusForItem(String title, String status) {
+        scrollToNewsItem(title);
+        onView(allOf(
+                withId(R.id.news_item_published_text_view),
+                withText(status),
+                isDescendantOfA(newsCardWithTitle(title))
+        )).check(matches(isDisplayed()));
+    }
+    public void checkAnyNewsStatusActive() {
+        onView(isRoot()).check(matches(withTextOnScreen(ACTIVE_NEWS)));
+    }
+    public void checkAnyNewsStatusNotActive() {
+        onView(isRoot()).check(matches(withTextOnScreen(NOT_ACTIVE_NEWS)));
+    }
+    public void clickDeleteButton() {
+        scrollToNewsCard();
+        deleteNewsButton.perform(scrollTo(), click());
+    }
+    public void clickEditNewsButton() {
+        scrollToNewsCard();
+        editNewsButton.perform(scrollTo(), click());
+    }
+
+    public void clickEditNewsButton(String title) {
+        scrollToNewsItem(title);
+        onView(allOf(
+                withId(R.id.news_item_edit_image_view),
+                isDescendantOfA(newsCardWithTitle(title))
+        )).perform(scrollTo(), click());
+    }
+    public void clickNewsDescriptionButton() {
+        scrollToNewsCard();
+        newsDescriptionButton.perform(scrollTo(), click());
+    }
+    public void checkNewsDescriptionText() {
+        scrollToNewsCard();
+        newsDescriptionText.perform(scrollTo());
+        newsDescriptionText.check(matches(isDisplayed()));
+    }
     public void getSortingNewsDescending() { newsList.check(isSortedByDate("dd.MM.yyyy", CustomViewAssertion.SortOrder.DESCENDING)); }
     public void getSortingNewsAscending() { newsList.check(isSortedByDate("dd.MM.yyyy", CustomViewAssertion.SortOrder.ASCENDING)); }
     public void checkDeleteMessage() { deleteMessage.check(matches(withTextOnScreen(DELETE_MESSAGE))); }

@@ -2,16 +2,16 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.closeSoftKeyboardIfVisible;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
 
-import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.childAtPosition;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withContentDescription;
 
 import androidx.test.espresso.ViewInteraction;
@@ -49,10 +49,10 @@ public class FilterOnEditNewsPage {
                 withId(R.id.filter_news_title_text_view),
                 withText(TITLE)
         ));
-        category = onView(withId(R.id.news_category_text_input_layout));
-        categoryList = onView(CustomViewMatcher.recyclerViewSizeMatcher(8));
+        category = onView(withId(R.id.filter_news_category_auto_complete));
+        categoryList = onView(withText(AUTO_COMPLETE)).inRoot(isPlatformPopup());
         selectCategoryButton = onView(allOf(
-                childAtPosition(withId(R.id.news_category_text_input_layout), 2),
+                isDisplayed(),
                 withContentDescription(SELECT_BUTTON)));
         startDate = onView(withId(R.id.filter_news_date_start_edit_text));
         endDate = onView(withId(R.id.filter_news_date_end_edit_text));
@@ -64,7 +64,7 @@ public class FilterOnEditNewsPage {
                 withId(R.id.filter_news_inactive_check_box),
                 withText(NOT_ACTIVE)
         ));
-        autoCompleteCategory = onView(withId(R.id.news_category_auto_complete));
+        autoCompleteCategory = onView(withId(R.id.filter_news_category_auto_complete));
         filterButton = onView(allOf(
                 withId(R.id.filter_news_apply_button),
                 withText(FILTER_BUTTON)
@@ -76,12 +76,12 @@ public class FilterOnEditNewsPage {
     }
     public void getFilter() {filterTitle.check(matches(isDisplayed()));}
     public void inputCategory(String value) {
-        category.perform(typeText(value));
+        category.perform(replaceText(value));
         closeSoftKeyboardIfNeeded();
     }
     public void clickSelectButton() {selectCategoryButton.perform(click());}
     public void getCategoryList() {categoryList.check(matches(isDisplayed()));}
-    public void getAutoCompleteCategory() {autoCompleteCategory.perform(typeText(AUTO_COMPLETE));}
+    public void getAutoCompleteCategory() {autoCompleteCategory.perform(replaceText(AUTO_COMPLETE));}
     private void closeSoftKeyboardIfNeeded() {
         closeSoftKeyboardIfVisible();
     }

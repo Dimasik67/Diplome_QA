@@ -3,7 +3,7 @@ package ru.edu.qamid.fmhandroid.ui.pages;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.closeSoftKeyboardIfVisible;
-import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
@@ -64,7 +64,7 @@ public class ChangeNewsPage {
         ));
         category = onView(withId(R.id.news_category_text_input_layout));
         selectCategoryButton = onView(allOf(
-                childAtPosition(withId(R.id.news_category_text_input_layout), 2),
+                isDisplayed(),
                 withContentDescription(CATEGORY_BUTTON)
         ));
         autoComplete = onView(withId(R.id.news_category_auto_complete));
@@ -74,8 +74,6 @@ public class ChangeNewsPage {
         publicationTime = onView(withId(R.id.news_publish_time_edit_text));
         descriptionNews = onView(withId(R.id.news_description_edit_text));
         switcher = onView(withId(R.id.news_active_switch));
-        switcherOn = onView(allOf(withId(R.id.news_active_switch), withText(SWITCHER_ON)));
-        switcherOff = onView(allOf(withId(R.id.news_active_switch), withText(SWITCHER_OFF)));
         saveButton = onView(allOf(
                 withId(R.id.news_save_button),
                 withContentDescription(SAVE_BUTTON)
@@ -97,9 +95,9 @@ public class ChangeNewsPage {
     }
     public void clickSelectionButton() {selectCategoryButton.perform(click());}
     public void getCategoryList() {categoryList.check(matches(isDisplayed()));}
-    public void getAutoComplete() {autoComplete.perform(typeText(CATEGORY)); }
+    public void getAutoComplete() {autoComplete.perform(replaceText(CATEGORY)); }
     public void inputItemNews(String value) {
-        itemNews.perform(typeText(value));
+        itemNews.perform(replaceText(value));
         closeSoftKeyboardIfNeeded();
     }
     public void selectPublicationDate(Calendar date) {
@@ -112,11 +110,30 @@ public class ChangeNewsPage {
     }
 
     public void inputPublicationTime(String value) {
-        publicationTime.perform(typeText(value));
+        publicationTime.perform(replaceText(value));
     }
     public void clickSwitcher() {switcher.perform(click());}
-    public void checkSwitcherOn() {switcherOn.check(matches(isDisplayed()));}
-    public void checkSwitcherOff() {switcherOff.check(matches(isDisplayed()));}
+    public void setSwitcherState(boolean active) {
+        switcher.check((view, error) -> {
+            if (error != null) throw error;
+            android.widget.CompoundButton button = (android.widget.CompoundButton) view;
+            if (button.isChecked() != active) {
+                button.performClick();
+            }
+        });
+    }
+    public void checkSwitcherOn() {switcher.check((view, error) -> {
+        if (error != null) throw error;
+        if (!((android.widget.CompoundButton) view).isChecked()) {
+            throw new AssertionError("Ожидался активный статус новости");
+        }
+    });}
+    public void checkSwitcherOff() {switcher.check((view, error) -> {
+        if (error != null) throw error;
+        if (((android.widget.CompoundButton) view).isChecked()) {
+            throw new AssertionError("Ожидался неактивный статус новости");
+        }
+    });}
     public void clickSaveButton() {saveButton.perform(click()); }
 
     public void clickCancelButton() {cancelButton.perform(click()); }

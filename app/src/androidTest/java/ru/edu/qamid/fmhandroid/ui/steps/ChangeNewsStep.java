@@ -38,13 +38,13 @@ public class ChangeNewsStep {
 
     @Step("Переключение свитчера в статус новости 'Активна'")
     public void getSwitcherOn() {
-        changeNewsPage.clickSwitcher();
+        changeNewsPage.setSwitcherState(true);
         changeNewsPage.checkSwitcherOn();
     }
 
     @Step("Переключение свитчера в статус новости 'Не активна'")
     public void getSwitcherOff() {
-        changeNewsPage.clickSwitcher();
+        changeNewsPage.setSwitcherState(false);
         changeNewsPage.checkSwitcherOff();
     }
 

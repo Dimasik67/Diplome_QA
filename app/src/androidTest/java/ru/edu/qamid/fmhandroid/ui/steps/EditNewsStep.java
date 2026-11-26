@@ -35,14 +35,29 @@ public class EditNewsStep {
     @Step("Проверка статуса новости 'Активна'")
     public void checkNewsStatusActive() { editNewsPage.checkNewsStatusActive();}
 
+    @Step("Проверка статуса новости 'Активна' {'value'}")
+    public void checkNewsStatusActive(String title) { editNewsPage.checkNewsStatusActive(title);}
+
     @Step("Проверка статуса новости 'Не активна'")
     public void checkNewsStatusNotActive() { editNewsPage.checkNewsStatusNotActive();}
+
+    @Step("Проверка статуса новости 'Не активна' {'value'}")
+    public void checkNewsStatusNotActive(String title) { editNewsPage.checkNewsStatusNotActive(title);}
+
+    @Step("Проверка наличия активной новости после фильтрации")
+    public void checkAnyNewsStatusActive() { editNewsPage.checkAnyNewsStatusActive();}
+
+    @Step("Проверка наличия неактивной новости после фильтрации")
+    public void checkAnyNewsStatusNotActive() { editNewsPage.checkAnyNewsStatusNotActive();}
 
     @Step("Кнопка удаления новости")
     public void clickDeleteButton() {editNewsPage.clickDeleteButton();}
 
     @Step("Редактирование новости")
     public void clickEditNewsButton() { editNewsPage.clickEditNewsButton();}
+
+    @Step("Редактирование новости {'title'}")
+    public void clickEditNewsButton(String title) { editNewsPage.clickEditNewsButton(title);}
 
     @Step("Развернуть содержание новости")
     public void clickNewsDescriptionButton() { editNewsPage.clickNewsDescriptionButton();}

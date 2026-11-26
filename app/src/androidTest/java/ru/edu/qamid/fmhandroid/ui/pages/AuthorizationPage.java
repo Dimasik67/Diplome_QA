@@ -9,16 +9,14 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.checkDisplayedWithRetry;
-import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.checkToastIsDisplayed;
 import static ru.edu.qamid.fmhandroid.ui.data.DataHelper.clickView;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withButtonId;
 import static ru.edu.qamid.fmhandroid.ui.matchers.CustomViewMatcher.withButtonText;
 
-import android.view.View;
-
 import androidx.test.espresso.ViewInteraction;
 
 import ru.edu.qamid.R;
+import ru.edu.qamid.fmhandroid.ui.data.ToastRecorder;
 
 public class AuthorizationPage {
     private final ViewInteraction loginInput;
@@ -56,12 +54,12 @@ public class AuthorizationPage {
         loginButton.perform(clickView());
     }
 
-    public void checkHasErrorMessage1(View decorView) {
-        checkToastIsDisplayed(ERROR_MESSAGE_EMPTY_FIELDS, decorView);
+    public void checkHasErrorMessage1() {
+        ToastRecorder.checkMessage(ERROR_MESSAGE_EMPTY_FIELDS);
     }
 
-    public void checkHasErrorMessage2(View decorView) {
-        checkToastIsDisplayed(ERROR_MESSAGE_GENERAL_ERROR, decorView);
+    public void checkHasErrorMessage2() {
+        ToastRecorder.checkMessage(ERROR_MESSAGE_GENERAL_ERROR);
     }
 
     public void checkAuthTitleIsDisplayed() {
