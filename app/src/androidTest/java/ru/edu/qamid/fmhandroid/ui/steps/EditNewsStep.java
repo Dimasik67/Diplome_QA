@@ -1,6 +1,5 @@
 package ru.edu.qamid.fmhandroid.ui.steps;
 
-import io.qameta.allure.kotlin.Step;
 import ru.edu.qamid.fmhandroid.ui.pages.EditNewsPage;
 
 public class EditNewsStep {
@@ -8,87 +7,115 @@ public class EditNewsStep {
 
     public EditNewsStep() {this.editNewsPage = new EditNewsPage(); }
 
-    @Step("Проверка перехода на страницу редактирования новостей")
-    public void openEditNews() {editNewsPage.getControlPanel(); }
+    public void openEditNews() {
+        AllureStep.run("Проверка перехода на страницу редактирования новостей", () -> editNewsPage.getControlPanel());
+    }
 
-    @Step("Проверка перехода на страницу создания новостей")
-    public void addNews() {editNewsPage.clickAddNewsButton();}
+    public void addNews() {
+        AllureStep.run("Проверка перехода на страницу создания новостей", () -> editNewsPage.clickAddNewsButton());
+    }
 
-    @Step("Проверка кнопки фильтрации новостей")
-    public void filteredNews() {editNewsPage.clickFilterNewsButton();}
+    public void filteredNews() {
+        AllureStep.run("Проверка кнопки фильтрации новостей", () -> editNewsPage.clickFilterNewsButton());
+    }
 
-    @Step("Сортировка новостей")
-    public void sortedNews() {editNewsPage.clickSortNewsButton();}
+    public void sortedNews() {
+        AllureStep.run("Сортировка новостей", () -> editNewsPage.clickSortNewsButton());
+    }
 
-    @Step("Наличие карточки новости")
-    public void checkNewsCard() { editNewsPage.checkNewsCard();}
+    public void checkNewsCard() {
+        AllureStep.run("Наличие карточки новости", () -> editNewsPage.checkNewsCard());
+    }
 
-    @Step("Проверка заголовка новости {'value'}")
-    public void checkNewsItem(String value) { editNewsPage.getNewsItem(value);}
+    public void checkNewsItem(String value) {
+        AllureStep.run("Проверка заголовка новости " + value, () -> editNewsPage.getNewsItem(value));
+    }
 
-    @Step("Проверка даты создания новости {'value'}")
-    public void checkNewsCreationDate(String value) {editNewsPage.getNewsCreationDate(value);}
+    public void checkNewsCreationDate(String value) {
+        AllureStep.run("Проверка даты создания новости " + value, () -> editNewsPage.getNewsCreationDate(value));
+    }
 
-    @Step("Проверка даты публикации {'value'}")
-    public void checkNewsPublicationDate(String value) {editNewsPage.getNewsPublicationDate(value);}
+    public void checkNewsPublicationDate(String value) {
+        AllureStep.run("Проверка даты публикации " + value, () -> editNewsPage.getNewsPublicationDate(value));
+    }
 
-    @Step("Проверка статуса новости 'Активна'")
-    public void checkNewsStatusActive() { editNewsPage.checkNewsStatusActive();}
+    public void checkNewsStatusActive() {
+        AllureStep.run("Проверка статуса новости 'Активна'", () -> editNewsPage.checkNewsStatusActive());
+    }
 
-    @Step("Проверка статуса новости 'Активна' {'value'}")
-    public void checkNewsStatusActive(String title) { editNewsPage.checkNewsStatusActive(title);}
+    public void checkNewsStatusActive(String title) {
+        AllureStep.run("Проверка статуса новости 'Активна' " + "{'value'}", () -> editNewsPage.checkNewsStatusActive(title));
+    }
 
-    @Step("Проверка статуса новости 'Не активна'")
-    public void checkNewsStatusNotActive() { editNewsPage.checkNewsStatusNotActive();}
+    public void checkNewsStatusNotActive() {
+        AllureStep.run("Проверка статуса новости 'Не активна'", () -> editNewsPage.checkNewsStatusNotActive());
+    }
 
-    @Step("Проверка статуса новости 'Не активна' {'value'}")
-    public void checkNewsStatusNotActive(String title) { editNewsPage.checkNewsStatusNotActive(title);}
+    public void checkNewsStatusNotActive(String title) {
+        AllureStep.run("Проверка статуса новости 'Не активна' " + "{'value'}", () -> editNewsPage.checkNewsStatusNotActive(title));
+    }
 
-    @Step("Проверка наличия активной новости после фильтрации")
-    public void checkAnyNewsStatusActive() { editNewsPage.checkAnyNewsStatusActive();}
+    public void checkAnyNewsStatusActive() {
+        AllureStep.run("Проверка наличия активной новости после фильтрации", () -> editNewsPage.checkAnyNewsStatusActive());
+    }
 
-    @Step("Проверка наличия неактивной новости после фильтрации")
-    public void checkAnyNewsStatusNotActive() { editNewsPage.checkAnyNewsStatusNotActive();}
+    public void checkAnyNewsStatusNotActive() {
+        AllureStep.run("Проверка наличия неактивной новости после фильтрации", () -> editNewsPage.checkAnyNewsStatusNotActive());
+    }
 
-    @Step("Кнопка удаления новости")
-    public void clickDeleteButton() {editNewsPage.clickDeleteButton();}
+    public void clickDeleteButton() {
+        AllureStep.run("Кнопка удаления новости", () -> editNewsPage.clickDeleteButton());
+    }
 
-    @Step("Редактирование новости")
-    public void clickEditNewsButton() { editNewsPage.clickEditNewsButton();}
+    public void clickEditNewsButton() {
+        AllureStep.run("Редактирование новости", () -> editNewsPage.clickEditNewsButton());
+    }
 
-    @Step("Редактирование новости {'title'}")
-    public void clickEditNewsButton(String title) { editNewsPage.clickEditNewsButton(title);}
+    public void clickEditNewsButton(String title) {
+        AllureStep.run("Редактирование новости " + title, () -> editNewsPage.clickEditNewsButton(title));
+    }
 
-    @Step("Развернуть содержание новости")
-    public void clickNewsDescriptionButton() { editNewsPage.clickNewsDescriptionButton();}
+    public void clickNewsDescriptionButton() {
+        AllureStep.run("Развернуть содержание новости", () -> editNewsPage.clickNewsDescriptionButton());
+    }
 
-    @Step("Прочесть содержание новости")
-    public void checkNewsDescriptionText() {editNewsPage.checkNewsDescriptionText();}
+    public void checkNewsDescriptionText() {
+        AllureStep.run("Прочесть содержание новости", () -> editNewsPage.checkNewsDescriptionText());
+    }
 
-    @Step("Сортировка новостей от новых к старым")
-    public void checkSortingNewsDescending() {editNewsPage.getSortingNewsDescending();}
+    public void checkSortingNewsDescending() {
+        AllureStep.run("Сортировка новостей от новых к старым", () -> editNewsPage.getSortingNewsDescending());
+    }
 
-    @Step("Сортировка новостей от старых к новым")
-    public void checkSortingNewsAscending() { editNewsPage.getSortingNewsAscending();}
+    public void checkSortingNewsAscending() {
+        AllureStep.run("Сортировка новостей от старых к новым", () -> editNewsPage.getSortingNewsAscending());
+    }
 
-    @Step("Диалоговое сообщение при удалении новости")
-    public void checkDeleteMessage() {editNewsPage.checkDeleteMessage();}
+    public void checkDeleteMessage() {
+        AllureStep.run("Диалоговое сообщение при удалении новости", () -> editNewsPage.checkDeleteMessage());
+    }
 
-    @Step("Отмена удаления новости")
-    public void clickCancelButton() { editNewsPage.clickCancelButton();}
+    public void clickCancelButton() {
+        AllureStep.run("Отмена удаления новости", () -> editNewsPage.clickCancelButton());
+    }
 
-    @Step("Подтверждение удаления новости")
-    public void clickOkButton() {editNewsPage.clickOkButton();}
+    public void clickOkButton() {
+        AllureStep.run("Подтверждение удаления новости", () -> editNewsPage.clickOkButton());
+    }
 
-    @Step("Проверка начального количества новостей")
-    public void checkInitialNewsCount() { editNewsPage.getInitialNewsCount();}
+    public void checkInitialNewsCount() {
+        AllureStep.run("Проверка начального количества новостей", () -> editNewsPage.getInitialNewsCount());
+    }
 
-    @Step("Проверка количества новостей после удаления новости")
-    public void checkNewsCountDecreasedByOne() { editNewsPage.checkNewsCountDecreasedByOne();}
+    public void checkNewsCountDecreasedByOne() {
+        AllureStep.run("Проверка количества новостей после удаления новости", () -> editNewsPage.checkNewsCountDecreasedByOne());
+    }
 
-    @Step("Проверка количества новостей после добавления новости")
-    public void checkNewsCountIncreasedByOne() {editNewsPage.checkNewsCountIncreasedByOne();}
+    public void checkNewsCountIncreasedByOne() {
+        AllureStep.run("Проверка количества новостей после добавления новости", () -> editNewsPage.checkNewsCountIncreasedByOne());
+    }
 
-    @Step("Проверка отображения категории новостей после фильтра")
-    public void getSelectCategory() {editNewsPage.getSelectCategory();}
+    public void getSelectCategory() {
+        AllureStep.run("Проверка отображения категории новостей после фильтра", () -> editNewsPage.getSelectCategory());
+    }
 }

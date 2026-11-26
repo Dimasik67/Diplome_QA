@@ -2,98 +2,124 @@ package ru.edu.qamid.fmhandroid.ui.steps;
 
 import java.util.Calendar;
 
-import io.qameta.allure.kotlin.Step;
 import ru.edu.qamid.fmhandroid.ui.pages.AddNewsPage;
 
 public class AddNewsStep {
     private final AddNewsPage addNewsPage;
     public AddNewsStep() {this.addNewsPage = new AddNewsPage();}
 
-    @Step("Проверка перехода на страницу создания новости")
-    public void openAddNews() {addNewsPage.openAddNews();}
+    public void openAddNews() {
+        AllureStep.run("Проверка перехода на страницу создания новости", () -> addNewsPage.openAddNews());
+    }
 
-    @Step("Ввод категории новостей вручную {'value'}")
-    public void inputNewsCategory(String value) {addNewsPage.inputCategoryNews(value);}
+    public void inputNewsCategory(String value) {
+        AllureStep.run("Ввод категории новостей вручную " + value, () -> addNewsPage.inputCategoryNews(value));
+    }
 
-    @Step("Развернуть список категорий новостей")
     public void getCategoryList() {
-        addNewsPage.clickCategoryButton();
-        addNewsPage.getCategoryList();
+        AllureStep.run("Развернуть список категорий новостей", () -> {
+            addNewsPage.clickCategoryButton();
+            addNewsPage.getCategoryList();
+        });
     }
 
-    @Step("Выбрать категорию из списка")
-    public void getAutoCompleteText() {addNewsPage.getAutoCompleteText();}
+    public void getAutoCompleteText() {
+        AllureStep.run("Выбрать категорию из списка", () -> addNewsPage.getAutoCompleteText());
+    }
 
-    @Step("Заполнение строки 'Заголовок' {'value'}")
-    public void inputNewsItem(String value) {addNewsPage.inputItemNews(value);}
+    public void inputNewsItem(String value) {
+        AllureStep.run("Заполнение строки 'Заголовок' " + value, () -> addNewsPage.inputItemNews(value));
+    }
 
-    @Step("Заполнить дату публикации {'date'}")
-    public void selectPublicationDate(Calendar date) {addNewsPage.selectPublicationDate(date);}
+    public void selectPublicationDate(Calendar date) {
+        AllureStep.run("Заполнить дату публикации " + date, () -> addNewsPage.selectPublicationDate(date));
+    }
 
-    @Step("Заполнить время публикации {'time'}")
-    public void selectPublicationTime(Calendar time) {addNewsPage.selectPublicationTime(time);}
+    public void selectPublicationTime(Calendar time) {
+        AllureStep.run("Заполнить время публикации " + time, () -> addNewsPage.selectPublicationTime(time));
+    }
 
-    @Step("Установка статуса новости 'Активна'")
     public void getSwitcherOn() {
-        addNewsPage.setSwitcherState(true);
-        addNewsPage.checkSwitcherOn();
+        AllureStep.run("Установка статуса новости 'Активна'", () -> {
+            addNewsPage.setSwitcherState(true);
+            addNewsPage.checkSwitcherOn();
+        });
     }
-    @Step("Установка статуса новости 'Не активна'")
     public void getSwitcherOff() {
-        addNewsPage.setSwitcherState(false);
-        addNewsPage.checkSwitcherOff();
+        AllureStep.run("Установка статуса новости 'Не активна'", () -> {
+            addNewsPage.setSwitcherState(false);
+            addNewsPage.checkSwitcherOff();
+        });
     }
-    @Step("Нажать кнопку 'Сохранить'")
-    public void clickSaveButton() {addNewsPage.clickSaveButton();}
+    public void clickSaveButton() {
+        AllureStep.run("Нажать кнопку 'Сохранить'", () -> addNewsPage.clickSaveButton());
+    }
 
-    @Step("Нажать кнопку 'Отмена'")
-    public void clickCancelButton() {addNewsPage.clickCancelButton();}
+    public void clickCancelButton() {
+        AllureStep.run("Нажать кнопку 'Отмена'", () -> addNewsPage.clickCancelButton());
+    }
 
-    @Step("Ошибка заполнения строки 'Категория'")
-    public void checkErrorCategoryLine() {addNewsPage.checkErrorCategoryIcon();}
+    public void checkErrorCategoryLine() {
+        AllureStep.run("Ошибка заполнения строки 'Категория'", () -> addNewsPage.checkErrorCategoryIcon());
+    }
 
-    @Step("Ошибка заполнения строки 'Заголовок'")
-    public void checkErrorItemLine() {addNewsPage.checkErrorItemIcon();}
+    public void checkErrorItemLine() {
+        AllureStep.run("Ошибка заполнения строки 'Заголовок'", () -> addNewsPage.checkErrorItemIcon());
+    }
 
-    @Step("Ошибка заполнения ячейки 'Дата публикации'")
-    public void checkErrorPublicationDate() {addNewsPage.checkErrorDateIcon();}
+    public void checkErrorPublicationDate() {
+        AllureStep.run("Ошибка заполнения ячейки 'Дата публикации'", () -> addNewsPage.checkErrorDateIcon());
+    }
 
-    @Step("Ошибка заполнения ячейки 'Время'")
-    public void checkErrorPublicationTime() {addNewsPage.checkErrorTimeIcon();}
+    public void checkErrorPublicationTime() {
+        AllureStep.run("Ошибка заполнения ячейки 'Время'", () -> addNewsPage.checkErrorTimeIcon());
+    }
 
-    @Step("Ошибка заполнения строки 'Описание'")
-    public void checkErrorDescriptionLine() {addNewsPage.checkErrorDescriptionIcon();}
+    public void checkErrorDescriptionLine() {
+        AllureStep.run("Ошибка заполнения строки 'Описание'", () -> addNewsPage.checkErrorDescriptionIcon());
+    }
 
-    @Step("Неверный формат времени")
-    public void checkTimeErrorMessage() {addNewsPage.checkErrorMessage();}
+    public void checkTimeErrorMessage() {
+        AllureStep.run("Неверный формат времени", () -> addNewsPage.checkErrorMessage());
+    }
 
-    @Step("Проверка введённого времени {'value'}")
-    public void checkTimeFieldValue(String value) {addNewsPage.checkTimeFieldValue(value);}
-    @Step("Поле даты пустое")
-    public void checkPublicationDateIsEmpty() {addNewsPage.checkPublicationDateIsEmpty();}
+    public void checkTimeFieldValue(String value) {
+        AllureStep.run("Проверка введённого времени " + value, () -> addNewsPage.checkTimeFieldValue(value));
+    }
+    public void checkPublicationDateIsEmpty() {
+        AllureStep.run("Поле даты пустое", () -> addNewsPage.checkPublicationDateIsEmpty());
+    }
 
-    @Step("Поле времени пустое")
-    public void checkPublicationTimeIsEmpty() {addNewsPage.checkPublicationTimeIsEmpty();}
+    public void checkPublicationTimeIsEmpty() {
+        AllureStep.run("Поле времени пустое", () -> addNewsPage.checkPublicationTimeIsEmpty());
+    }
 
-    @Step("Предупреждение, что данные не будут сохранены при отмене добавления новости")
-    public void checkCancelMessage() {addNewsPage.checkCancelMessage();}
+    public void checkCancelMessage() {
+        AllureStep.run("Предупреждение, что данные не будут сохранены при отмене добавления новости", () -> addNewsPage.checkCancelMessage());
+    }
 
-    @Step("Подтвердить отмену добавления новости")
-    public void clickOkButton() {addNewsPage.clickOkButton();}
+    public void clickOkButton() {
+        AllureStep.run("Подтвердить отмену добавления новости", () -> addNewsPage.clickOkButton());
+    }
 
-    @Step("Вернуться к созданию новости")
-    public void clickCancelButton2() {addNewsPage.clickCancelButton2();}
+    public void clickCancelButton2() {
+        AllureStep.run("Вернуться к созданию новости", () -> addNewsPage.clickCancelButton2());
+    }
 
-    @Step("Заполнить строку 'Описание' {'value'}")
-    public void inputNewsDescription(String value) {addNewsPage.inputNewsDescription(value);}
+    public void inputNewsDescription(String value) {
+        AllureStep.run("Заполнить строку 'Описание' " + value, () -> addNewsPage.inputNewsDescription(value));
+    }
 
-    @Step("Ошибка при сохранении новости с несуществующей в списке категорией")
-    public void checkSaveErrorMessage() {addNewsPage.checkSaveErrorMessage();}
+    public void checkSaveErrorMessage() {
+        AllureStep.run("Ошибка при сохранении новости с несуществующей в списке категорией", () -> addNewsPage.checkSaveErrorMessage());
+    }
 
-    @Step("Сообщение о незаполненных полях новости")
-    public void checkEmptyFieldsErrorMessage() {addNewsPage.checkEmptyFieldsErrorMessage();}
+    public void checkEmptyFieldsErrorMessage() {
+        AllureStep.run("Сообщение о незаполненных полях новости", () -> addNewsPage.checkEmptyFieldsErrorMessage());
+    }
 
-    @Step("Ввод некорректного формата времени {'time'}")
-    public void inputInvalidTimeFormat(String time) {addNewsPage.inputInvalidTime(time);}
+    public void inputInvalidTimeFormat(String time) {
+        AllureStep.run("Ввод некорректного формата времени " + time, () -> addNewsPage.inputInvalidTime(time));
+    }
 
 }

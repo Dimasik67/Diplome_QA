@@ -1,34 +1,41 @@
 package ru.edu.qamid.fmhandroid.ui.steps;
 
-import io.qameta.allure.kotlin.Step;
 import ru.edu.qamid.fmhandroid.ui.pages.QuotespagePage;
 
 public class QuotespageStep {
     private final QuotespagePage quotespagePage;
     public QuotespageStep() {this.quotespagePage = new QuotespagePage(); }
 
-    @Step("Проверка перехода на страницу 'Цитаты'")
-    public void openQuotespage() { quotespagePage.getQuotespage(); }
+    public void openQuotespage() {
+        AllureStep.run("Проверка перехода на страницу 'Цитаты'", () -> quotespagePage.getQuotespage());
+    }
 
-    @Step("Проверка количества цитат на странице")
-    public void getListOfQuotes() { quotespagePage.getListOfQuotes(); }
+    public void getListOfQuotes() {
+        AllureStep.run("Проверка количества цитат на странице", () -> quotespagePage.getListOfQuotes());
+    }
 
-    @Step("Переход к цитате №8")
-    public void getQuote8Card() { quotespagePage.getQuote8Card();}
+    public void getQuote8Card() {
+        AllureStep.run("Переход к цитате №8", () -> quotespagePage.getQuote8Card());
+    }
 
-    @Step("Развернуть карточку с цитатой")
-    public void clickExpandQuote8Button() { quotespagePage.clickExpandQuote8Button(); }
+    public void clickExpandQuote8Button() {
+        AllureStep.run("Развернуть карточку с цитатой", () -> quotespagePage.clickExpandQuote8Button());
+    }
 
-    @Step("Прочесть текст цитаты №8")
-    public void getQuote8Text() { quotespagePage.getQuote8Text(); }
+    public void getQuote8Text() {
+        AllureStep.run("Прочесть текст цитаты №8", () -> quotespagePage.getQuote8Text());
+    }
 
-    @Step ("Нажать на кнопку главного меню")
-    public void clickMainMenuButton() { quotespagePage.clickMainMenuButton(); }
+    public void clickMainMenuButton() {
+        AllureStep.run("Нажать на кнопку главного меню", () -> quotespagePage.clickMainMenuButton());
+    }
 
-    @Step ("Переход на главную страницу приложения через кнопку главного меню")
-    public void clickMainMenuElementMainPage() { quotespagePage.clickMainMenuElementMainPage(); }
+    public void clickMainMenuElementMainPage() {
+        AllureStep.run("Переход на главную страницу приложения через кнопку главного меню", () -> quotespagePage.clickMainMenuElementMainPage());
+    }
 
-    @Step("Переход на страницу новостей через кнопку главного меню")
-    public void clickMainMenuElementNews() { quotespagePage.clickMainMenuElementNews(); }
+    public void clickMainMenuElementNews() {
+        AllureStep.run("Переход на страницу новостей через кнопку главного меню", () -> quotespagePage.clickMainMenuElementNews());
+    }
 
 }

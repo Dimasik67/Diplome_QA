@@ -2,65 +2,79 @@ package ru.edu.qamid.fmhandroid.ui.steps;
 
 import java.util.Calendar;
 
-import io.qameta.allure.kotlin.Step;
 import ru.edu.qamid.fmhandroid.ui.pages.ChangeNewsPage;
 
 public class ChangeNewsStep {
     private final ChangeNewsPage changeNewsPage;
     public ChangeNewsStep() {this.changeNewsPage = new ChangeNewsPage();}
 
-    @Step("Открыть страницу редактирования новости")
-    public void openChangeNews() {changeNewsPage.openChangePage();}
+    public void openChangeNews() {
+        AllureStep.run("Открыть страницу редактирования новости", () -> changeNewsPage.openChangePage());
+    }
 
 
-    @Step("Развернуть список категорий")
     public void getCategoryList() {
-        changeNewsPage.clickSelectionButton();
-        changeNewsPage.getCategoryList();
+        AllureStep.run("Развернуть список категорий", () -> {
+            changeNewsPage.clickSelectionButton();
+            changeNewsPage.getCategoryList();
+        });
     }
 
-    @Step("Выбрать категорию из списка")
-    public void getAutoComplete() {changeNewsPage.getAutoComplete();}
+    public void getAutoComplete() {
+        AllureStep.run("Выбрать категорию из списка", () -> changeNewsPage.getAutoComplete());
+    }
 
-    @Step("Ввести заголовок новости {'value'}")
-    public void inputNewsItem(String value) {changeNewsPage.inputItemNews(value);}
+    public void inputNewsItem(String value) {
+        AllureStep.run("Ввести заголовок новости " + value, () -> changeNewsPage.inputItemNews(value));
+    }
 
-    @Step("Заполнение поля 'Дата публикации' {'date'}")
-    public void selectPublicationDate(Calendar date) {changeNewsPage.selectPublicationDate(date);}
-    @Step("Заполнение формы времени {'time'}")
-    public void selectPublicationTime(Calendar time) {changeNewsPage.selectPublicationTime(time);}
+    public void selectPublicationDate(Calendar date) {
+        AllureStep.run("Заполнение поля 'Дата публикации' " + date, () -> changeNewsPage.selectPublicationDate(date));
+    }
+    public void selectPublicationTime(Calendar time) {
+        AllureStep.run("Заполнение формы времени " + time, () -> changeNewsPage.selectPublicationTime(time));
+    }
 
-    @Step("Заполнение времени вручную {'value'}")
-    public void inputPublicationTime(String value) {changeNewsPage.inputPublicationTime(value);}
+    public void inputPublicationTime(String value) {
+        AllureStep.run("Заполнение времени вручную " + value, () -> changeNewsPage.inputPublicationTime(value));
+    }
 
-    @Step("Ошибка неверного формата времени")
-    public void getPublicTimeErrorMessage() { changeNewsPage.getErrorMessage();}
+    public void getPublicTimeErrorMessage() {
+        AllureStep.run("Ошибка неверного формата времени", () -> changeNewsPage.getErrorMessage());
+    }
 
-    @Step("Переключение свитчера в статус новости 'Активна'")
     public void getSwitcherOn() {
-        changeNewsPage.setSwitcherState(true);
-        changeNewsPage.checkSwitcherOn();
+        AllureStep.run("Переключение свитчера в статус новости 'Активна'", () -> {
+            changeNewsPage.setSwitcherState(true);
+            changeNewsPage.checkSwitcherOn();
+        });
     }
 
-    @Step("Переключение свитчера в статус новости 'Не активна'")
     public void getSwitcherOff() {
-        changeNewsPage.setSwitcherState(false);
-        changeNewsPage.checkSwitcherOff();
+        AllureStep.run("Переключение свитчера в статус новости 'Не активна'", () -> {
+            changeNewsPage.setSwitcherState(false);
+            changeNewsPage.checkSwitcherOff();
+        });
     }
 
-    @Step("Нажать кнопку 'Сохранить'")
-    public void clickSaveButton() {changeNewsPage.clickSaveButton();}
+    public void clickSaveButton() {
+        AllureStep.run("Нажать кнопку 'Сохранить'", () -> changeNewsPage.clickSaveButton());
+    }
 
-    @Step("Нажать кнопку 'Отмена'")
-    public void clickCancelButton() {changeNewsPage.clickCancelButton();}
+    public void clickCancelButton() {
+        AllureStep.run("Нажать кнопку 'Отмена'", () -> changeNewsPage.clickCancelButton());
+    }
 
-    @Step("Предупреждение, что данные не будут сохранены при отмене редактирования")
-    public void getCancelMessage() {changeNewsPage.getCancelMessage();}
+    public void getCancelMessage() {
+        AllureStep.run("Предупреждение, что данные не будут сохранены при отмене редактирования", () -> changeNewsPage.getCancelMessage());
+    }
 
-    @Step("Подтвердить отмену редактирования")
-    public void clickOkButton() {changeNewsPage.clickOkButton();}
+    public void clickOkButton() {
+        AllureStep.run("Подтвердить отмену редактирования", () -> changeNewsPage.clickOkButton());
+    }
 
-    @Step("Вернуться к редактированию")
-    public void clickCancelButton2() {changeNewsPage.clickCancelButton2();}
+    public void clickCancelButton2() {
+        AllureStep.run("Вернуться к редактированию", () -> changeNewsPage.clickCancelButton2());
+    }
 
 }

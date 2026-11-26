@@ -1,6 +1,5 @@
 package ru.edu.qamid.fmhandroid.ui.steps;
 
-import io.qameta.allure.kotlin.Step;
 import ru.edu.qamid.fmhandroid.ui.pages.NewspagePage;
 
 public class NewspageStep {
@@ -8,29 +7,35 @@ public class NewspageStep {
 
     public NewspageStep() {this.newspagePage = new NewspagePage(); }
 
-    @Step("Проверка перехода на страницу Новости")
-    public void openNewspage() {newspagePage.getNewspagePage();}
+    public void openNewspage() {
+        AllureStep.run("Проверка перехода на страницу Новости", () -> newspagePage.getNewspagePage());
+    }
 
-    @Step("Переход на главную страницу приложения через кнопку главного меню")
     public void openMainPage() {
-        newspagePage.clickMainMenuButton();
-        newspagePage.clickMainMenuElementMainPage();
+        AllureStep.run("Переход на главную страницу приложения через кнопку главного меню", () -> {
+            newspagePage.clickMainMenuButton();
+            newspagePage.clickMainMenuElementMainPage();
+        });
     }
 
-    @Step("Переход на страницу 'Новости' через кнопку главного меню")
     public void openNewsPage() {
-        newspagePage.clickMainMenuButton();
-        newspagePage.clickMainMenuElementNews();
+        AllureStep.run("Переход на страницу 'Новости' через кнопку главного меню", () -> {
+            newspagePage.clickMainMenuButton();
+            newspagePage.clickMainMenuElementNews();
+        });
     }
 
-    @Step("Переход на страницу 'Цитаты'")
-    public void clickMissionButton() { newspagePage.clickMissionButton(); }
+    public void clickMissionButton() {
+        AllureStep.run("Переход на страницу 'Цитаты'", () -> newspagePage.clickMissionButton());
+    }
 
-    @Step("Проверка кнопки редактирования новостей")
-    public void clickEditNewsButton() { newspagePage.clickEditNewsButton(); }
+    public void clickEditNewsButton() {
+        AllureStep.run("Проверка кнопки редактирования новостей", () -> newspagePage.clickEditNewsButton());
+    }
 
-    @Step("Проверка кнопки фильтрации новостей")
-    public void clickFilterNewsButton() { newspagePage.clickFilterNewsButton(); }
+    public void clickFilterNewsButton() {
+        AllureStep.run("Проверка кнопки фильтрации новостей", () -> newspagePage.clickFilterNewsButton());
+    }
 
 
 
