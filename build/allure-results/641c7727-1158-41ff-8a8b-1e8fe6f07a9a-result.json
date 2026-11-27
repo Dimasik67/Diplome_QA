@@ -1,0 +1,54 @@
+{
+    "name": "ТС-015. Переход с главной страницы на страницу 'Новости' через главное меню",
+    "start": 1795617939631,
+    "stop": 1795617945226,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "641c7727-1158-41ff-8a8b-1e8fe6f07a9a",
+    "historyId": "61980360fe00cdbe08ba2b5ebb083520",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AppHomePageTest.mainMenuElementNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AppHomePageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "mainMenuElementNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AppHomePageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 2. Главная страница приложения. Тестовые сценарии ТС-014 - ТС-017"
+        }
+    ]
+}

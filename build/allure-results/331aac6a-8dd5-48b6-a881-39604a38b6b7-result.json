@@ -1,0 +1,54 @@
+{
+    "name": "ТС-011. Ввод логина и пароля незарегистрированного пользователя",
+    "start": 1795618134776,
+    "stop": 1795618139927,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "331aac6a-8dd5-48b6-a881-39604a38b6b7",
+    "historyId": "11c68e3527d5f989ff62cd18f892b60e",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest.useInvalidLogAndPassTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "useInvalidLogAndPassTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 1. Авторизация пользователя. Тестовые сценарии ТС-001 - ТС-013"
+        }
+    ]
+}

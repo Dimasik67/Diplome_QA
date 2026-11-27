@@ -1,0 +1,54 @@
+{
+    "name": "ТС-051. Изменение статуса активной новости на 'Не активна'",
+    "start": 1795618160299,
+    "stop": 1795618169174,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "7fc2f856-379f-454c-a1cb-e7455432c5e1",
+    "historyId": "adc98b7e531ebbc1dba454232d56962f",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest.changeNewsStatusFromActiveToNotActiveTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "changeNewsStatusFromActiveToNotActiveTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.2. Просмотр, сортировка, редактирование, удаление новостей. Тестовые сценарии ТС-049 - ТС-051"
+        }
+    ]
+}

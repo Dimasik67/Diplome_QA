@@ -1,0 +1,54 @@
+{
+    "name": "ТС-028. Ввод названия категории новостей на кириллице с клавиатуры",
+    "start": 1795618189610,
+    "stop": 1795618196194,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "8acc6c9f-f77d-454d-9ebe-1a6832000ee0",
+    "historyId": "f86c47e381187cb544505a097551e518",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest.enteringCategoryNameInCyrillicTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "enteringCategoryNameInCyrillicTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 6. Вкладка 'Фильтровать новости' на странице 'Новости'. Тестовые сценарии ТС-026 - ТС-037"
+        }
+    ]
+}

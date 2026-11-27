@@ -1,0 +1,54 @@
+{
+    "name": "ТС-037. Работа кнопки 'Отмена'",
+    "start": 1795618240035,
+    "stop": 1795618246228,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "411dab70-1e64-480f-8d5a-a1282861b5ca",
+    "historyId": "a8a691d660c30f58fb08f9fdada2e799",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest.cancelButtonOperationTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "cancelButtonOperationTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 6. Вкладка 'Фильтровать новости' на странице 'Новости'. Тестовые сценарии ТС-026 - ТС-037"
+        }
+    ]
+}

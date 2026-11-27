@@ -1,0 +1,54 @@
+{
+    "name": "ТС-022. Переход на страницу 'Цитаты' через кнопку на панели управления приложением",
+    "start": 1795618335008,
+    "stop": 1795618341081,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "22bd21c0-8467-46db-98dc-e2964c94d0f3",
+    "historyId": "1c535226fce522ad028616dc36edbd5e",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest.openQuotesTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "openQuotesTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 4. Страница 'Новости'. Тестовые сценарии ТС-021 - ТС-025"
+        }
+    ]
+}

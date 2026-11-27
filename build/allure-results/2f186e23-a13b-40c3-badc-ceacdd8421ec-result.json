@@ -1,0 +1,54 @@
+{
+    "name": "ТС-029. Ввод названия категории новостей цифрами с клавиатуры",
+    "start": 1795618183075,
+    "stop": 1795618189565,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "2f186e23-a13b-40c3-badc-ceacdd8421ec",
+    "historyId": "ec1c91c38302a162203734bc20c3d504",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest.enteringCategoryNameInNumbersTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "enteringCategoryNameInNumbersTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 6. Вкладка 'Фильтровать новости' на странице 'Новости'. Тестовые сценарии ТС-026 - ТС-037"
+        }
+    ]
+}

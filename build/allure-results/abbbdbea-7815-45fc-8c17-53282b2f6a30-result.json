@@ -1,0 +1,54 @@
+{
+    "name": "ТС-039. Создание неактивной новости с вводом категории вручную",
+    "start": 1795617870137,
+    "stop": 1795617881284,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "abbbdbea-7815-45fc-8c17-53282b2f6a30",
+    "historyId": "3cd916004f2106b0c15fb0ab88ca206e",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest.createNotActiveNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "createNotActiveNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.1. Создание новостей. Тестовые сценарии ТС-038 - ТС-048"
+        }
+    ]
+}

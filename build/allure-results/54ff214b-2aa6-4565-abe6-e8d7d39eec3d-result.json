@@ -1,0 +1,54 @@
+{
+    "name": "ТС-024. Работа кнопки 'Фильтр'",
+    "start": 1795618341107,
+    "stop": 1795618346989,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "54ff214b-2aa6-4565-abe6-e8d7d39eec3d",
+    "historyId": "de10cbaee00c639c66d9a127f30bd891",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest.openFilterNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "openFilterNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 4. Страница 'Новости'. Тестовые сценарии ТС-021 - ТС-025"
+        }
+    ]
+}

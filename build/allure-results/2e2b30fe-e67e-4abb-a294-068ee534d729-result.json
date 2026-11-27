@@ -1,0 +1,54 @@
+{
+    "name": "ТС-001. Ввод валидных логина и пароля",
+    "start": 1795617962054,
+    "stop": 1795618032827,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "2e2b30fe-e67e-4abb-a294-068ee534d729",
+    "historyId": "38db68ea0962bdc5345cf53774a74bb4",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest.usedValidLogAndPassTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "usedValidLogAndPassTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 1. Авторизация пользователя. Тестовые сценарии ТС-001 - ТС-013"
+        }
+    ]
+}

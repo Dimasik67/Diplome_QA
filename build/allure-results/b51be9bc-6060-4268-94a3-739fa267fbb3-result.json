@@ -1,0 +1,54 @@
+{
+    "name": "ТС-055. Работа кнопки 'Отмена'",
+    "start": 1795618301466,
+    "stop": 1795618308396,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "b51be9bc-6060-4268-94a3-739fa267fbb3",
+    "historyId": "2f5158d8c39935d9853d9243090da482",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterOnEditNewsTest.cancelButtonTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterOnEditNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "cancelButtonTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterOnEditNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.3. Фильтрация новостей. Тестовые сценарии ТС-052 - ТС-055"
+        }
+    ]
+}

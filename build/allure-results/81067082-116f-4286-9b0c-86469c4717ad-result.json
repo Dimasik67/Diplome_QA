@@ -1,0 +1,54 @@
+{
+    "name": "ТС-017. Переход в раздел 'Цитаты' через кнопку на панели управления приложения",
+    "start": 1795617945278,
+    "stop": 1795617950459,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "81067082-116f-4286-9b0c-86469c4717ad",
+    "historyId": "aa8abe9cfef6bd85c46feb7455182183",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AppHomePageTest.openQuotesPageTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AppHomePageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "openQuotesPageTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AppHomePageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 2. Главная страница приложения. Тестовые сценарии ТС-014 - ТС-017"
+        }
+    ]
+}

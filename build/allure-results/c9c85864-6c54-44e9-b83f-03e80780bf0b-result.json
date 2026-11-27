@@ -1,0 +1,54 @@
+{
+    "name": "ТС-031. Ввод названия категории новостей на латинице",
+    "start": 1795618202575,
+    "stop": 1795618208975,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "c9c85864-6c54-44e9-b83f-03e80780bf0b",
+    "historyId": "e8206dd228265eff1125434aa2a8925a",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest.enteringCategoryNameInLatinTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "enteringCategoryNameInLatinTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 6. Вкладка 'Фильтровать новости' на странице 'Новости'. Тестовые сценарии ТС-026 - ТС-037"
+        }
+    ]
+}

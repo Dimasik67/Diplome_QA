@@ -1,0 +1,54 @@
+{
+    "name": "ТС-020. Переход в раздел 'Новости' через главное меню",
+    "start": 1795618347014,
+    "stop": 1795618352916,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "c3327588-bef9-40dc-9c58-35a919ea97be",
+    "historyId": "af982e339034f68e480e6d03af5fe38d",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest.mainMenuElementNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "mainMenuElementNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 3. Страница 'Цитаты'. Тестовые сценарии ТС-018 - ТС-020"
+        }
+    ]
+}

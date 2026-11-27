@@ -1,0 +1,54 @@
+{
+    "name": "ТС-009. Ввод валидного логина, ввод в поле 'Пароль' спецсимволов",
+    "start": 1795618103600,
+    "stop": 1795618108929,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "3e6e6400-0e32-4c80-ae2f-19882cc5a6b1",
+    "historyId": "cb0db382cac21f62f5872d0764b8f964",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest.specialSymbolPassTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "specialSymbolPassTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AuthorizationTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 1. Авторизация пользователя. Тестовые сценарии ТС-001 - ТС-013"
+        }
+    ]
+}

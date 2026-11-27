@@ -1,0 +1,54 @@
+{
+    "name": "ТС-038. Создание активной новости с категорией 'День рождения'",
+    "start": 1795617881321,
+    "stop": 1795617891914,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "b5016e39-8eb6-489d-84c6-f39059702a51",
+    "historyId": "7ce0635c277dade9ea201283db369057",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest.createBirthdayCategoryNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "createBirthdayCategoryNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.1. Создание новостей. Тестовые сценарии ТС-038 - ТС-048"
+        }
+    ]
+}

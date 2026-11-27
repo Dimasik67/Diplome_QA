@@ -1,0 +1,54 @@
+{
+    "name": "ТС-023. Переход на страницу 'Новости' через главное меню",
+    "start": 1795618329317,
+    "stop": 1795618334973,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "8cf394b5-39ac-44e4-a7f6-fae68824150c",
+    "historyId": "5be3b6af4da700f0ea35e70e3ce7d0be",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest.mainMenuElementNewsIsNotActiveTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "mainMenuElementNewsIsNotActiveTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 4. Страница 'Новости'. Тестовые сценарии ТС-021 - ТС-025"
+        }
+    ]
+}

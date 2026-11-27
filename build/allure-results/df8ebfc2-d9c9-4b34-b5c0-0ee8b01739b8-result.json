@@ -1,0 +1,54 @@
+{
+    "name": "ТС-018. Возможность развернуть для чтения цитату на выбор",
+    "start": 1795618359073,
+    "stop": 1795618364957,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "df8ebfc2-d9c9-4b34-b5c0-0ee8b01739b8",
+    "historyId": "1006a8a841b420ba183f178f5a2bfbc",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest.expandQuoteTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "expandQuoteTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 3. Страница 'Цитаты'. Тестовые сценарии ТС-018 - ТС-020"
+        }
+    ]
+}

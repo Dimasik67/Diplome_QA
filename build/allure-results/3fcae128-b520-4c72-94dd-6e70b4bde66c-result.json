@@ -1,0 +1,54 @@
+{
+    "name": "ТС-027. Выбор категории 'Объявления' из выпадающего списка",
+    "start": 1795618270348,
+    "stop": 1795618277196,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "3fcae128-b520-4c72-94dd-6e70b4bde66c",
+    "historyId": "f630165b0a5a05c1e3388224b74c9cc9",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest.selectAnnouncementCategoryTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "selectAnnouncementCategoryTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 6. Вкладка 'Фильтровать новости' на странице 'Новости'. Тестовые сценарии ТС-026 - ТС-037"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "name": "ТС-050. Редактирование новости",
+    "start": 1795618169210,
+    "stop": 1795618176575,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "367dc9e3-d82e-477f-a6a0-bf6bb0a07bca",
+    "historyId": "b2e3992a85b6d6a503aa6b2036fddd9e",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest.editNewsCategoryTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "editNewsCategoryTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.2. Просмотр, сортировка, редактирование, удаление новостей. Тестовые сценарии ТС-049 - ТС-051"
+        }
+    ]
+}

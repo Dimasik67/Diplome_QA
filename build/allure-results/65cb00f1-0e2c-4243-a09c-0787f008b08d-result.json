@@ -1,0 +1,54 @@
+{
+    "name": "ТС-053. Заполнен чекбокс статуса 'Активна'",
+    "start": 1795618283660,
+    "stop": 1795618290971,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "65cb00f1-0e2c-4243-a09c-0787f008b08d",
+    "historyId": "15460881e1441261699f72bc51e3648",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.FilterOnEditNewsTest.checkBoxActiveNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterOnEditNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "checkBoxActiveNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.FilterOnEditNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.3. Фильтрация новостей. Тестовые сценарии ТС-052 - ТС-055"
+        }
+    ]
+}

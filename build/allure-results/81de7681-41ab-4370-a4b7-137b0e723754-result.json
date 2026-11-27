@@ -1,0 +1,54 @@
+{
+    "name": "ТС-025. Работа кнопки 'Редактирование'",
+    "start": 1795618316700,
+    "stop": 1795618322998,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "81de7681-41ab-4370-a4b7-137b0e723754",
+    "historyId": "e6a202b4c0fc28b43bc08695136d78e1",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest.openEditNewsTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "openEditNewsTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.NewspageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 4. Страница 'Новости'. Тестовые сценарии ТС-021 - ТС-025"
+        }
+    ]
+}

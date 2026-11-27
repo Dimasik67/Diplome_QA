@@ -1,0 +1,54 @@
+{
+    "name": "ТС-042. Ввод несуществующего в списке названия категории новостей",
+    "start": 1795617901937,
+    "stop": 1795617911104,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "6a17d915-cc3f-4a02-b019-130d0b824577",
+    "historyId": "58ff11cf1dc13b1aa2229ba1c0f75cde",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest.newsCategoryNotExistTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "newsCategoryNotExistTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.AddNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.1. Создание новостей. Тестовые сценарии ТС-038 - ТС-048"
+        }
+    ]
+}

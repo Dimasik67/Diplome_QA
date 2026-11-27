@@ -1,0 +1,54 @@
+{
+    "name": "ТС-019. Переход на главную страницу приложения через главное меню",
+    "start": 1795618352950,
+    "stop": 1795618359037,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "0d684b4d-2262-4c91-a8ed-34f8310e0b6d",
+    "historyId": "513fd3d4323f772f8d2f1a24e0c7e363",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest.mainMenuElementMainPageTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "mainMenuElementMainPageTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.QuotespageTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 3. Страница 'Цитаты'. Тестовые сценарии ТС-018 - ТС-020"
+        }
+    ]
+}

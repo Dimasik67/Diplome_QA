@@ -1,0 +1,54 @@
+{
+    "name": "ТС-049. Просмотр текста новости",
+    "start": 1795618176609,
+    "stop": 1795618183039,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [],
+    "attachments": [],
+    "parameters": [],
+    "uuid": "0df72c8f-6ed5-46b9-90c9-4b07691d29e8",
+    "historyId": "e838be2c96b43e5aa65f931e3abac22c",
+    "fullName": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest.readNewsDescriptionTest",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.edu.qamid.fmhandroid.ui.test"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "readNewsDescriptionTest"
+        },
+        {
+            "name": "suite",
+            "value": "ru.edu.qamid.fmhandroid.ui.test.EditNewsTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: androidx.test.runner.AndroidJUnitRunner(14437)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "epic",
+            "value": "Блок 7. Страница 'Панель управления'. Подпункт 7.2. Просмотр, сортировка, редактирование, удаление новостей. Тестовые сценарии ТС-049 - ТС-051"
+        }
+    ]
+}
